@@ -27,7 +27,9 @@ docker-compose up
 ※clone後の初回起動時（`docker-compose up`実行後）に「Dockerコンテナが正常に起動しない問題」が発生するので、
 `Ctrl + C`でコンテナを停止し、「Dockerコンテナが正常に起動しない問題」の対処法を実行する。
 
-※`docker-compose up`で正常に起動すると下記のようなログが出力される。
+`docker-compose up`で正常に起動すると下記のようなログが出力される。
+
+※`docker-compose up`の実行時はdockerのログが出っぱなしになりコマンド入力できなくなる為、別のターミナルを開いて下さい。
 ```
 web_1  | （省略）
 web_1  | * Environment: development
@@ -41,35 +43,21 @@ docker-compose ps
 ```
 ※起動状態：State = Up 、停止状態：State = Exit
 
-### 起動しているコンテナに入りRails環境構築を行う
-このコマンドで コンテナに入る。
-```
-docker-compose exec web bash
-```
-※コンテナに入ると以下の様な表示になり、ターミナルと同じようにコマンド入力できる。
-```
-root@c04fbf9df6e7:/myapp#
-```
+### 起動したコンテナにてRails環境構築を行う
 
-#### コンテナ内で、bundle installする
+**bundle installする**
 ```
-# bundle install
+docker-compose exec web bundle install
 ```
-
-#### コンテナ内で、DBを作成する
+**DBを作成する**
 ```
-# rails db:create
+docker-compose exec web rails db:create
 ```
-#### コンテナ内で、マイグレーション実行
+**マイグレーション実行**
 ```
-# rails db:migrate
+docker-compose exec web rails db:migrate
 ```
 ※railsページが見れるようになります。http://localhost:3000/
-
-##### コンテナから出る
-```
-# exit
-```
 
 ### docker-composeコンテナを停止する方法
 ```
@@ -116,7 +104,7 @@ docker-compose logs
 
 #### 対処法
 
-以下の方法で、yarnをインストールしてください。（約5分）
+`Ctrl + C`でコンテナを停止し、以下の方法で yarnをインストールしてください。（約5分）
 ```
 $ docker-compose run --rm web yarn install
 ```

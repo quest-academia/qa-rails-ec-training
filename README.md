@@ -55,7 +55,7 @@ docker-compose exec web rails db:create
 ```
 **マイグレーション実行**
 ```
-docker-compose exec web rails db:migrate
+docker-compose exec web bundle exec rails db:migrate
 ```
 ※railsページが見れるようになります。http://localhost:3000/
 

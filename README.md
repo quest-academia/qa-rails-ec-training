@@ -51,7 +51,7 @@ docker-compose exec web bundle install
 ```
 **DBを作成する**
 ```
-docker-compose exec web rails db:create
+docker-compose exec web bundle exec rails db:create
 ```
 **マイグレーション実行**
 ```

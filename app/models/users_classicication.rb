@@ -1,2 +1,0 @@
-class UsersClassicication < ApplicationRecord
-end

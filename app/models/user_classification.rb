@@ -1,0 +1,2 @@
+class UserClassification < ApplicationRecord
+end

@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :apartments
       t.string :email
       t.string :phone_number
-      t.references :user_classifications, null: false, foreign_key: true
+      t.references :user_classification, null: false, foreign_key: true
       t.string :company_name
       t.boolean :delete_flag
 

@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_170656) do
 
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "purchase_price", null: false
-    t.integer "purchase_quanity", null: false
+    t.integer "purchase_quantity", null: false
     t.string "purchase_company", null: false
     t.datetime "order_date"
     t.datetime "purchase_date"

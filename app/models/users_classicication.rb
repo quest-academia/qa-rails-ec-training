@@ -1,0 +1,2 @@
+class UsersClassicication < ApplicationRecord
+end

@@ -1,13 +1,18 @@
 class User < ApplicationRecord
-<<<<<<< HEAD
-<<<<<<< HEAD
+  before_save { self.email = email.downcase }
   belongs_to :user_classification
   has_many :products
-=======
-  belongs_to :user_classifications
->>>>>>> 3e734f7... user_classifications, users テーブル作成
-=======
-  belongs_to :user_classification
-  has_many :products
->>>>>>> origin/develop-dandelion
+  has_secure_password
+  validates :password, presence: true, length: { in: 6..15 }, format: { with: /\A[a-z0-9]+\z/i }, uniqueness => { case_sensitive: false }
+  validates :last_name, presence: true, length: { maximum: 10 }
+  validates :first_name, presence: true, length: { maximum: 10 }
+  validates :zipcode, presence: true, format: { with: /\A[a-z0-9]+\z/i }, length: { is: 7 }
+  validates :prefecture, presence: true, length: { maximum: 5 }
+  validates :municipality, presence: true, length: { maximum: 10 }
+  validates :address, presence: true, length: { maximum: 15 }
+  validates :apartments, presence: true, length: { maximum: 15 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :phone_number, presence: true, format: { with: /\A[a-z0-9]+\z/i }, length: { maximum: 15 }
+  validates :delete_flag, inclusion: { in: [true, false] }
 end

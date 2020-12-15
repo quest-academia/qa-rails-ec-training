@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user_classification = UserClassification.create!(
-  user_classification_name: "会社員"
+  user_classification_name: "会社員",
 )
 
 user_classification.users.create!(
   last_name: "田中",
   first_name: "太郎",
-  zipcode: 1234567,
+  zipcode: 1_234_567,
   prefecture: "兵庫県",
   municipality: "神戸市",
   address: "123456",
@@ -23,5 +23,5 @@ user_classification.users.create!(
   company_name: "tanakacampany",
   delete_flag: true,
   password: "abc123",
-  password_confirmation: "abc123"
+  password_confirmation: "abc123",
 )

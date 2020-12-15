@@ -4,13 +4,10 @@ class User < ApplicationRecord
   has_many :products
   has_secure_password
   validates :password, presence: true, length: { in: 6..15 }, format: { with: /\A[a-z0-9]+\z/i }
-  validates :last_name, presence: true, length: { maximum: 10 }
-  validates :first_name, presence: true, length: { maximum: 10 }
+  validates :last_name, :first_name, :municipality, presence: true, length: { maximum: 10 }
   validates :zipcode, presence: true, format: { with: /\A[a-z0-9]+\z/i }, length: { is: 7 }
   validates :prefecture, presence: true, length: { maximum: 5 }
-  validates :municipality, presence: true, length: { maximum: 10 }
-  validates :address, presence: true, length: { maximum: 15 }
-  validates :apartments, presence: true, length: { maximum: 15 }
+  validates :address, :apartments, presence: true, length: { maximum: 15 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :phone_number, presence: true, format: { with: /\A[a-z0-9]+\z/i }, length: { maximum: 15 }

@@ -3,7 +3,7 @@ class User < ApplicationRecord
   belongs_to :user_classification
   has_many :products
   has_secure_password
-  validates :password, presence: true, length: { in: 6..15 }, format: { with: /\A[a-z0-9]+\z/i }, uniqueness => { case_sensitive: false }
+  validates :password, presence: true, length: { in: 6..15 }, format: { with: /\A[a-z0-9]+\z/i }
   validates :last_name, presence: true, length: { maximum: 10 }
   validates :first_name, presence: true, length: { maximum: 10 }
   validates :zipcode, presence: true, format: { with: /\A[a-z0-9]+\z/i }, length: { is: 7 }

@@ -13,7 +13,7 @@ user_classification = UserClassification.create!(
 user_classification.users.create!(
   last_name: "田中",
   first_name: "太郎",
-  zipcode: 1_234_567,
+  zipcode: 1234567,
   prefecture: "兵庫県",
   municipality: "神戸市",
   address: "123456",

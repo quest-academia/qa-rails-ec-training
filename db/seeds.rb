@@ -18,7 +18,7 @@ user_classification.users.create!(
   municipality: "神戸市",
   address: "123456",
   apartments: "apartment",
-  email: "tanaka@example.com",
+  email: "tanakataro@example.com",
   phone_number: "123456789012345",
   company_name: "tanakacampany",
   delete_flag: true,

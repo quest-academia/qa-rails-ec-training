@@ -27,6 +27,8 @@ gem 'bcrypt',         '3.1.12'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'bootstrap', '~> 4.5.3'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'parser', '~> 2.7.1.5'

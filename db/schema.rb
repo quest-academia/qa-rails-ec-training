@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_170656) do
+ActiveRecord::Schema.define(version: 2020_12_15_073143) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "category_name", null: false
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 2020_12_11_170656) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "password"
     t.string "last_name"
     t.string "first_name"
     t.integer "zipcode"
@@ -81,6 +80,8 @@ ActiveRecord::Schema.define(version: 2020_12_11_170656) do
     t.boolean "delete_flag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["user_classification_id"], name: "index_users_on_user_classification_id"
   end
 

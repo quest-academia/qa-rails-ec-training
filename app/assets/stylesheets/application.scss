@@ -13,144 +13,118 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
+ @import "bootstrap";
 
-/* header */
-header {
-  background-color: gold;
-}
-
-header .container {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.hlogo:link,
-.hlogo:visited,
-.hlogo:hover,
-.hmenu:link,
-.hmenu:visited,
-.hmenu:hover,
-.username:link,
-.username:visited,
-.username:hover {
-  color: black;
-  text-decoration: none;
-}
-
-@media screen and (min-width: 769px) {
-
-  /* main */
-  main {
-    margin: 80px 0;
-  }
-
-  .top_inner {
-    padding-top: 160px;
-  }
-
-  /* header */
-  .hmenu {
-    margin-right: 20px;
-  }
-
-  .username {
-    padding-right: 22px;
-  }
-}
-
-/* footer */
-footer .container {
-  display: flex;
-  justify-content: space-between;
-}
-
-footer {
-  background-color: gold;
-}
-
-.flogo:link,
-.flogo:visited,
-.flogo:hover {
-  color: black;
-  text-decoration: none;
-}
-
-/* レスポンシブ */
-@media screen and (max-width: 768px) {
-
-  /* header */
-  .navbar {
-    padding: .25rem .5rem !important;
-  }
-
-  header .container {
-    padding-right: 0px;
-    padding-left: 0px;
-  }
-
-  .display-block {
-    display: block !important;
-  }
-
-  .navbar {
-    padding: .25rem .5rem;
-  }
-
-  .nav-menu {
-    margin: auto;
-  }
-
-  .nav-item {
-    margin: auto;
-  }
-
-  .hlogo {
-    font-size: 1rem;
-  }
-
-  .hmenu {
-    font-size: 0.65rem;
-  }
-
-  .navmenu {
-    width: 100%;
-    margin: .2rem 0 .2rem 0;
-  }
-
-  .username {
-    font-size: .8rem;
-    padding: .4rem .5rem 0 0;
-  }
-
-  /* main */
-  main {
-    margin: 5rem 0;
-  }
-
-  .top_inner {
-    padding-top: 6rem;
-  }
-
-  .title {
-    font-size: 1.6rem
-  }
-
-  .title_text {
-    font-size: .9rem
-  }
-
-  /* footer */
-  footer .container {
-    padding-right: 8px;
-    padding-left: 8px;
-  }
-
-  .flogo {
-    font-size: 0.5rem;
-  }
-
-  .copyright {
-    font-size: 0.5rem;
-  }
-}
+ /* header */
+ header {
+   background-color: gold;
+ }
+ 
+ header .container {
+   padding-left: 0;
+   padding-right: 0;
+ }
+ 
+ .hlogo:link,
+ .hlogo:visited,
+ .hlogo:hover,
+ .hmenu:link,
+ .hmenu:visited,
+ .hmenu:hover,
+ .username:link,
+ .username:visited,
+ .username:hover {
+   color: black;
+   text-decoration: none;
+ }
+ 
+ @media screen and (min-width: 769px) {
+ 
+   /* header */
+   .hmenu {
+     margin-right: 20px;
+   }
+ 
+   .username {
+     padding-right: 22px;
+   }
+ }
+ 
+ /* footer */
+ footer .container {
+   display: flex;
+   justify-content: space-between;
+ }
+ 
+ footer {
+   background-color: gold;
+ }
+ 
+ .flogo:link,
+ .flogo:visited,
+ .flogo:hover {
+   color: black;
+   text-decoration: none;
+ }
+ 
+ /* レスポンシブ */
+ @media screen and (max-width: 768px) {
+ 
+   /* header */
+   .navbar {
+     padding: .25rem .5rem !important;
+   }
+ 
+   header .container {
+     padding-right: 0px;
+     padding-left: 0px;
+   }
+ 
+   .display-block {
+     display: block !important;
+   }
+ 
+   .navbar {
+     padding: .25rem .5rem;
+   }
+ 
+   .nav-menu {
+     margin: auto;
+   }
+ 
+   .nav-item {
+     margin: auto;
+   }
+ 
+   .hlogo {
+     font-size: 1rem;
+   }
+ 
+   .hmenu {
+     font-size: 0.65rem;
+   }
+ 
+   .navmenu {
+     width: 100%;
+     margin: .2rem 0 .2rem 0;
+   }
+ 
+   .username {
+     font-size: .8rem;
+     padding: .4rem .5rem 0 0;
+   }
+ 
+   /* footer */
+   footer .container {
+     padding-right: 8px;
+     padding-left: 8px;
+   }
+ 
+   .flogo {
+     font-size: 0.5rem;
+   }
+ 
+   .copyright {
+     font-size: 0.5rem;
+   }
+ }

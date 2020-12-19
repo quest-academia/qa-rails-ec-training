@@ -67,7 +67,6 @@ end
 # ユーザー１が持つ商品の仕入：1〜2
 user1_products = user1.products
 i = user1_products.first.id
-# i = (user1.products.first).id
 purchase_array = %w[109000 10 AppleJapan株式会社], %w[93000 10 AppleJapan株式会社]
 purchase_array.each do |first, second, third|
   user1.products.find(i).purchases.create!(
@@ -99,7 +98,6 @@ end
 # ユーザー２が持つ商品の仕入：3〜4
 user2_products = user2.products
 i = user2_products.first.id
-# i = (user2.products.first).id
 purchase_array = %w[1000 5 SBクリエイティブ], %w[1200 5 技術評論社]
 purchase_array.each do |first, second, third|
   user2.products.find(i).purchases.create!(

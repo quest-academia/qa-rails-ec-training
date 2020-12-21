@@ -1,3 +1,28 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@media screen and (min-width: 769px) {
+  main { margin: 80px 0; }
+  
+  .top_inner {
+    padding-top: 160px;
+  }
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+
+/* main */
+main {
+  margin: 5rem 0;
+  }
+
+.top_inner {
+  padding-top: 6rem;
+  }
+
+.title {
+  font-size: 1.6rem
+  }
+
+.title_text {
+  font-size: .9rem
+  }
+}

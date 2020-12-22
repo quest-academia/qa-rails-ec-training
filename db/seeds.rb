@@ -10,8 +10,9 @@
 user_classification = UserClassification.create!(user_classification_name: "会社員")
 
 # ユーザー生成（1〜3）
-user_array = %w[田中 太郎 兵庫県 神戸市], %w[鈴木 一郎 愛知県 名古屋市], %w[佐藤 二郎 静岡県 静岡市]
-user_array.each.with_index(1) do |(first, second, third, fourth), i|
+[ 
+  %w[田中 太郎 兵庫県 神戸市], %w[鈴木 一郎 愛知県 名古屋市], %w[佐藤 二郎 静岡県 静岡市]
+].each.with_index(1) do |(first, second, third, fourth), i|
   user_classification.users.create!(
     last_name: first,
     first_name: second,
@@ -30,27 +31,25 @@ user_array.each.with_index(1) do |(first, second, third, fourth), i|
 end
 
 # カテゴリー
-cate_array = %w[PC関連 書籍]
-cate_array.each do
+%w[PC関連 書籍].each do
   Category.create!(category_name: _1)
 end
 
 # 販売状況
-sale_st_array = %w[販売中 販売終了]
-sale_st_array.each do
+%w[販売中 販売終了].each do
   SaleStatus.create!(sale_status_name: _1)
 end
 
 # 商品状態
-product_st_array = %w[新品 中古]
-product_st_array.each do
+%w[新品 中古].each do
   ProductStatus.create!(product_status_name: _1)
 end
 
 # ユーザー１が持つ商品：1〜2
 user1 = User.first
-product_array = %w[MacBookPro13インチ 154800 M1チップ搭載\ 16GB\ 256GB], %w[MacMini 132800 M1チップ搭載\ 16Gb\ 1TB]
-product_array.each do
+[
+  %w[MacBookPro13インチ 154800 M1チップ搭載\ 16GB\ 256GB], %w[MacMini 132800 M1チップ搭載\ 16Gb\ 1TB]
+].each do
   user1.products.create!(
     product_name: _1,
     price: _2,
@@ -63,8 +62,9 @@ product_array.each do
 end
 
 # ユーザー１が持つ商品の仕入：1〜2
-purchase_array = %w[109000 10 AppleJapan株式会社], %w[93000 10 AppleJapan株式会社]
-purchase_array.each.with_index(1) do |(first, second, third), i|
+[
+  %w[109000 10 AppleJapan株式会社], %w[93000 10 AppleJapan株式会社]
+].each.with_index(1) do |(first, second, third), i|
   user1.products.find(i).purchases.create!(
     purchase_price: first,
     purchase_quantity: second,
@@ -76,9 +76,10 @@ end
 
 # ユーザー２が持つ商品：3〜4
 user2 = User.second
-product_array = %w[この一冊で全部わかるWeb技術の基本 1700 HTTP、データ形式からシステム開発まで。知識ゼロから全体像をつかめる。],
-                %w[基礎からのプログラミングリテラシー 2000 コンピュータのしくみから技術書の選び方まで厳選キーワードをくらべて学ぶ！]
-product_array.each do
+[
+  %w[この一冊で全部わかるWeb技術の基本 1700 HTTP、データ形式からシステム開発まで。知識ゼロから全体像をつかめる。],
+  %w[基礎からのプログラミングリテラシー 2000 コンピュータのしくみから技術書の選び方まで厳選キーワードをくらべて学ぶ！]
+].each do
   user2.products.create!(
     product_name: _1,
     price: _2,
@@ -91,8 +92,9 @@ product_array.each do
 end
 
 # ユーザー２が持つ商品の仕入：3〜4
-purchase_array = %w[1000 5 SBクリエイティブ], %w[1200 5 技術評論社]
-purchase_array.each.with_index(3) do |(first, second, third), i|
+[
+  %w[1000 5 SBクリエイティブ], %w[1200 5 技術評論社]
+].each.with_index(3) do |(first, second, third), i|
   user2.products.find(i).purchases.create!(
     purchase_price: first,
     purchase_quantity: second,

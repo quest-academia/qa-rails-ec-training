@@ -1,0 +1,38 @@
+<% provide(:title, "ユーザ情報画面") %>
+
+<div class="container">
+
+  <div class="container text-center">
+    <h1 class="title font-weight-bold mb-5">ユーザー情報</h1>
+    <table class="table table-borderless">
+      <tbody><tr>
+        <td>ユーザーID</td>
+        <td class="text-left"><%= @user.id %></td>
+      </tr>
+      <tr>
+        <td>氏名</td>
+        <td class="text-left"><%= "#{@user.last_name} #{@user.first_name} " %></td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td class="text-left">
+          <p><%= "〒#{@user.zipcode} "%></p>
+          <p><%= "#{@user.prefecture}#{@user.municipality}#{@user.address}#{@user.apartments} "%></p>
+        </td>
+      </tr>
+      <tr>
+        <td>電話番号</td>
+        <td class="text-left"><%= @user.phone_number %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td class="text-left"><%= @user.emamil %></td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <div class="text-center my-5">
+    <button type="submit" class="btn btn-lg btn-primary">修正/退会する</button>
+  </div>
+
+</div>

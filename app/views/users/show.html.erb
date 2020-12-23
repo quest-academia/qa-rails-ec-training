@@ -11,12 +11,12 @@
       </tr>
       <tr>
         <td>氏名</td>
-        <td class="text-left"><%= "#{@user.last_name} #{@user.first_name} " %></td>
+        <td class="text-left"><%= "#{@user.last_name} #{@user.first_name}" %></td>
       </tr>
       <tr>
         <td>住所</td>
         <td class="text-left">
-          <p><%= "〒#{@user.zipcode} "%></p>
+          <p><%= "〒#{@user.zipcode.to_s.insert(3, "-")} "%></p>
           <p><%= "#{@user.prefecture}#{@user.municipality}#{@user.address}#{@user.apartments} "%></p>
         </td>
       </tr>

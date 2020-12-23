@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="new_user">
   <h3 class="text-center">お客様情報登録</h3>
   
   <%= form_with(model: @user, local: true) do |f| %>
@@ -17,7 +17,7 @@
       <%= f.text_field :zipcode, class: "ml-4 col-5 form-control" %>
     </div>
 
-    <form class="form-inline" id="address">
+    <div class="form-inline" id="address">
       <label>住所</label>
       <div class="form-group col-12">
         <%= f.label "都道府県", class: "col-sm-3" %>
@@ -46,16 +46,16 @@
           <%= f.text_field :apartments, class: "form-control" %>
         </div>
       </div>
-    </form>
+    </div>
 
     <div class="form-group mt-2">
       <%= f.label "メールアドレス", class: "" %>
-      <%= f.text_field :email, class: "ml-4 form-control mailform" %>
+      <%= f.email_field :email, class: "ml-4 form-control mailform" %>
     </div>
 
     <div class="form-group mt-2">
       <%= f.label "電話番号", class: "" %>
-      <%= f.text_field :phone_number, class: "ml-4 form-control telform" %>
+      <%= f.telephone_field :phone_number, class: "ml-4 form-control telform" %>
     </div>
 
     <div class="form-group mt-2">

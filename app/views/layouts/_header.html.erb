@@ -1,17 +1,26 @@
 <header class="navbar fixed-top">
   <div class="container">
-    <h2><%= link_to '探求学園Rails専攻', '#', class:"hlogo font-weight-bold" %></h2>
-    <%= link_to 'ゆーや さん', '#', class:"ml-auto username" %>
+    <h2><%= link_to '探求学園Rails専攻', root_path, class:"hlogo font-weight-bold" %></h2>
+    <% if @login_flag %>
+      <%= link_to 'ゆーや さん', '#', class:"ml-auto username" %>
+    <% else %>
+      <ul class="nav nav-right">
+        <li class="mr-4"><%= link_to 'ログイン', '#', class:"hmenu" %></li>
+        <li><%= link_to '新規登録', new_user_path, class:"hmenu" %></li>
+      </ul>
+    <% end %>
   </div>
-  <div class="container">
-    <div class="ml-auto navmenu">
-      <div class="d-flex justify-content-around w-100">
-        <%= link_to '商品検索', '#', class:"hmenu" %>
-        <%= link_to 'カート', '#', class:"hmenu" %>
-        <%= link_to '注文履歴', '#', class:"hmenu" %>
-        <%= link_to 'ユーザ情報', '#', class:"hmenu" %>
-        <%= link_to 'ログアウト', '#', class:"hmenu" %>
+  <% if @login_flag %>
+    <div class="container">
+      <div class="ml-auto navmenu">
+        <div class="d-flex justify-content-around w-100">
+          <%= link_to '商品検索', '#', class:"hmenu" %>
+          <%= link_to 'カート', '#', class:"hmenu" %>
+          <%= link_to '注文履歴', '#', class:"hmenu" %>
+          <%= link_to 'ユーザ情報', 'user_path', class:"hmenu" %>
+          <%= link_to 'ログアウト', '#', class:"hmenu" %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </header>

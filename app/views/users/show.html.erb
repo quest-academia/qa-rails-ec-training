@@ -17,7 +17,7 @@
         <td>住所</td>
         <td class="text-left">
           <p><%= "〒#{@user.zipcode.to_s.insert(3, "-")} "%></p>
-          <p><%= "#{@user.prefecture}#{@user.municipality}#{@user.address}#{@user.apartments} "%></p>
+          <p><%= "#{@user.prefecture}#{@user.municipality}#{@user.address}#{@user.apartments}" %></p>
         </td>
       </tr>
       <tr>

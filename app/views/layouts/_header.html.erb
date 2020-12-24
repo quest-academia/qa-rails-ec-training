@@ -2,7 +2,7 @@
   <div class="container">
     <h2><%= link_to '探求学園Rails専攻', root_path, class:"hlogo font-weight-bold" %></h2>
     <% if logged_in? %>
-      <%= link_to 'ゆーや さん', user_path(current_user), class:"ml-auto username" %>
+      <%= link_to "#{current_user.last_name} #{current_user.first_name} さん", user_path(current_user), class:"ml-auto username" %>
     <% else %>
       <ul class="nav nav-right">
         <li class="mr-4"><%= link_to 'ログイン', '#', class:"hmenu" %></li>

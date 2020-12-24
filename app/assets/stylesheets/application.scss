@@ -39,7 +39,16 @@ header .container {
 }
 
 @media screen and (min-width: 769px) {
-  #new_user { width: 540px; margin-top: 40px; margin-bottom: 50px;}
+  main .container {
+    padding-top: 20px;
+  }
+  
+  #new_user {
+    width: 540px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+  }
+
   /* header */
   .hmenu {
     margin-right: 20px;
@@ -114,6 +123,11 @@ footer {
     padding: .4rem .5rem 0 0;
   }
 
+  .text-center { font-size: 1.4rem;}
+  .mailform { width: 14.8rem;}
+  .telform { width: 14.8rem;}
+  .info { font-size: 1rem;}
+  
   /* footer */
   footer .container {
     padding-right: 8px;

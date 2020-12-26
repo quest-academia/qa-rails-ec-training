@@ -132,15 +132,15 @@ $ docker-compose up
 ### 使用方法（起動したコンテナにてrubocopを行う）
 - 違反している箇所を表示する。
 ```
-docker-compose exec web rubocop
+docker-compose exec web bundle exec rubocop
 ```
 - 違反している箇所を自動的に修正する。
 ```
-docker-compose exec web rubocop -a
+docker-compose exec web bundle exec rubocop -a
 ```
 - その他のオプションを確認する。
 ```
-docker-compose exec web rubocop --help
+docker-compose exec web bundle exec rubocop --help
 ```
 
 ### 出力の基本構文

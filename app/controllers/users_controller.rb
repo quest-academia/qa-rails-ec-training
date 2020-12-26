@@ -5,12 +5,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save!
+    if @user.save
       log_in @user
       flash[:success] = "新規作成に成功しました。"
       redirect_to @user
     else
-      redirect_to new_user_url
+      flash.now[:danger] = "正しい値を入力してください。"
+      render :new
     end
   end
 

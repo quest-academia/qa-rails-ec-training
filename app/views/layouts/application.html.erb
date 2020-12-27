@@ -14,7 +14,7 @@
     <!-- header -->
     <%= render 'layouts/header' %>
     
-    <main id="<%= "login_margin" if logged_in? %>">
+    <main id="<%= "login-margin" if logged_in? %>">
       <% flash.each do |message_type, msg| %>
         <div class="alert alert-<%= message_type %>"><%= msg.html_safe %></div>
       <% end %>

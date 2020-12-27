@@ -1,23 +1,42 @@
+.info:link,
+.info:visited,
+.info:hover,
+.info {
+  text-decoration: none;
+}
+
 @media screen and (min-width: 769px) {
   #new_user {
     width: 540px;
     margin-top: 40px;
     margin-bottom: 50px;
   }
+
+  input.form-control.lname,
+  input.form-control.fname {
+    width: 216px;
+  }
+
+  input.form-control.mailform,
+  input.form-control.telform {
+    width: 458px;
+  }
 }
 
-.text-center {
-  font-size: 1.4rem;
-}
+@media screen and (max-width: 768px) {
+  .text-center {
+    font-size: 1.4rem;
+  }
 
-.mailform {
-  width: 14.8rem;
-}
+  input.form-control.mailform {
+    width: 16.5rem;
+  }
 
-.telform {
-  width: 14.8rem;
-}
+  input.form-control.telform {
+    width: 16.5rem;
+  }
 
-.info {
-  font-size: 1rem;
+  .info {
+    font-size: 1rem;
+  }
 }

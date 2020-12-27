@@ -138,10 +138,6 @@ docker-compose exec web bundle exec rubocop
 ```
 docker-compose exec web bundle exec rubocop -a
 ```
-- その他のオプションを確認する。
-```
-docker-compose exec web bundle exec rubocop --help
-```
 
 ### 出力の基本構文
 1箇所の違反に対し、3行でワンセットです。

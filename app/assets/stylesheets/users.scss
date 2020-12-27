@@ -28,10 +28,12 @@
     font-size: 1.4rem;
   }
 
-  input.form-control.mailform {
-    width: 16.5rem;
+  input.form-control.lname,
+  input.form-control.fname {
+    width: 17.5rem;
   }
 
+  input.form-control.mailform,
   input.form-control.telform {
     width: 16.5rem;
   }

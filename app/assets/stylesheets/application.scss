@@ -80,6 +80,17 @@ footer {
 
 /* レスポンシブ */
 @media screen and (max-width: 768px) {
+  main {
+    margin-top: 4rem;
+  }
+
+  #login-margin {
+    margin-top: 5.2rem;
+  }
+  
+  .alert {
+    font-size: .8rem;
+  }
 
   /* header */
   .navbar {

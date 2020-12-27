@@ -1,0 +1,44 @@
+.info:link,
+.info:visited,
+.info:hover,
+.info {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 769px) {
+  #new_user {
+    width: 540px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+  }
+
+  input.form-control.lname,
+  input.form-control.fname {
+    width: 216px;
+  }
+
+  input.form-control.mailform,
+  input.form-control.telform {
+    width: 458px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .text-center {
+    font-size: 1.4rem;
+  }
+
+  input.form-control.lname,
+  input.form-control.fname {
+    width: 17.5rem;
+  }
+
+  input.form-control.mailform,
+  input.form-control.telform {
+    width: 16.5rem;
+  }
+
+  .info {
+    font-size: 1rem;
+  }
+}

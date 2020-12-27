@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_21_085428) do
+ActiveRecord::Schema.define(version: 2020_12_24_015420) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "category_name", null: false
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2020_12_21_085428) do
     t.string "phone_number"
     t.bigint "user_classification_id"
     t.string "company_name"
-    t.boolean "delete_flag"
+    t.boolean "delete_flag", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"

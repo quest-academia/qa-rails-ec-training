@@ -10,7 +10,7 @@
 user_classification = UserClassification.create!(user_classification_name: "会社員")
 
 # ユーザー生成（1〜3）
-[ 
+[
   %w[田中 太郎 兵庫県 神戸市], %w[鈴木 一郎 愛知県 名古屋市], %w[佐藤 二郎 静岡県 静岡市]
 ].each.with_index(1) do |(first, second, third, fourth), i|
   user_classification.users.create!(
@@ -78,7 +78,7 @@ end
 user2 = User.second
 [
   %w[この一冊で全部わかるWeb技術の基本 1700 HTTP、データ形式からシステム開発まで。知識ゼロから全体像をつかめる。],
-  %w[基礎からのプログラミングリテラシー 2000 コンピュータのしくみから技術書の選び方まで厳選キーワードをくらべて学ぶ！]
+  %w[基礎からのプログラミングリテラシー 2000 コンピュータのしくみから技術書の選び方まで厳選キーワードをくらべて学ぶ！],
 ].each do
   user2.products.create!(
     product_name: _1,

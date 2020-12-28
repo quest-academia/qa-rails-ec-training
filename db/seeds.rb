@@ -127,9 +127,9 @@ order1.order_details.create!(
   product_id: 1,
   order_id: 1,
   shipment_status_id: 1,
-  order_detail_number: 1,
+  order_detail_number: hogehoge1,
   order_quantity: 1,
-  shipment_date: 1
+  shipment_date: Time.now
   )
 
 # オーダー2が持つ注文の詳細
@@ -138,9 +138,9 @@ order2.order_details.create!(
   product_id: 2,
   order_id: 2,
   shipment_status_id: 1,
-  order_detail_number: 2,
+  order_detail_number: hogehoge2,
   order_quantity: 1,
-  shipment_date: 2
+  shipment_date: Time.now
   )
 
 # オーダー3が持つ注文の詳細
@@ -149,7 +149,7 @@ order3.order_details.create!(
   product_id: 3,
   order_id: 3,
   shipment_status_id: 1,
-  order_detail_number: 3,
+  order_detail_number: hogehoge3,
   order_quantity: 1,
-  shipment_date: 3
+  shipment_date: Time.now
   )

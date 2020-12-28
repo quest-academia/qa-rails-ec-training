@@ -1,4 +1,4 @@
-# Rils共同開発講座
+# Rails共同開発講座
 
 ## Member
 

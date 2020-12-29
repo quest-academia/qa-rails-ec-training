@@ -127,7 +127,7 @@ order1.order_details.create!(
   product_id: 1,
   order_id: 1,
   shipment_status_id: 1,
-  order_detail_number: hogehoge1,
+  order_detail_number: "foobar123",
   order_quantity: 1,
   shipment_date: Time.now
   )
@@ -138,7 +138,7 @@ order2.order_details.create!(
   product_id: 2,
   order_id: 2,
   shipment_status_id: 1,
-  order_detail_number: hogehoge2,
+  order_detail_number: "foobar456",
   order_quantity: 1,
   shipment_date: Time.now
   )
@@ -149,7 +149,7 @@ order3.order_details.create!(
   product_id: 3,
   order_id: 3,
   shipment_status_id: 1,
-  order_detail_number: hogehoge3,
+  order_detail_number: "foobar789",
   order_quantity: 1,
   shipment_date: Time.now
   )

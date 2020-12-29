@@ -103,3 +103,53 @@ end
     purchase_date: Time.current,
   )
 end
+
+
+
+# 発送状態
+shipment_status = ShipmentStatus.create!(shipment_status_name: "入荷待ち")
+
+# ユーザー1が持つ注文
+user1 = User.first
+user1.orders.create!(order_date: Time.now)
+  
+# ユーザー2が持つ注文
+user2 = User.second
+user2.orders.create!(order_date: Time.now)
+
+# ユーザー3が持つ注文
+user3 = User.third
+user3.orders.create!(order_date: Time.now)
+
+# オーダー1が持つ注文の詳細
+order1 = Order.first
+order1.order_details.create!(
+  product_id: 1,
+  order_id: 1,
+  shipment_status_id: 1,
+  order_detail_number: "foobar123",
+  order_quantity: 1,
+  shipment_date: Time.now
+  )
+
+# オーダー2が持つ注文の詳細
+order2 = Order.second
+order2.order_details.create!(
+  product_id: 2,
+  order_id: 2,
+  shipment_status_id: 1,
+  order_detail_number: "foobar456",
+  order_quantity: 1,
+  shipment_date: Time.now
+  )
+
+# オーダー3が持つ注文の詳細
+order3 = Order.third
+order3.order_details.create!(
+  product_id: 3,
+  order_id: 3,
+  shipment_status_id: 1,
+  order_detail_number: "foobar789",
+  order_quantity: 1,
+  shipment_date: Time.now
+  )

@@ -1,22 +1,22 @@
 <div class="container">
-  <% if @login_flag %>
+  <% if logged_in? %>
     <%# ログイン前 %>
     <div class="top_inner text-center">
+      <h1 class="title font-weight-bold">探求学園Rails専攻 ECサイト</h1>
+      <p class="title_text">ご利用いただき、ありがとうございます<br>右上のメニューから商品を検索したり、注文したりできます</p>
+    </div>
+  <% else %>
+    <%# ログイン後 %>
+    <div class="top_inner text-center">
       <h1 class="title font-weight-bold">探求学園Rails専攻　ECサイト</h1><br>
-       <div class="row">
+      <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-6">まだアカウントを<br>お持ちでない方はこちら<br>
-          <%= link_to "新規登録", "#", class: "btn btn-primary"%>
+          <%= link_to "新規登録", new_user_path, class: "btn btn-primary"%>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6">すでにアカウントを<br>お持ちの方はこちら<br>
           <%= link_to "ログイン", "#", class: "btn btn-primary"%>
         </div>
       </div>
-    </div>
-  <% else %>
-    <%# ログイン後 %>
-    <div class="top_inner text-center">
-      <h1 class="title font-weight-bold">やんばるエキスパート ECサイト</h1>
-      <p class="title_text">ご利用いただき、ありがとうございます<br>右上のメニューから商品を検索したり、注文したりできます</p>
     </div>
   <% end %>
 </div>

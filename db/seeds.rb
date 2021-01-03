@@ -10,7 +10,7 @@
 user_classification = UserClassification.create!(user_classification_name: "会社員")
 
 # ユーザー生成（1〜3）
-[ 
+[
   %w[田中 太郎 兵庫県 神戸市], %w[鈴木 一郎 愛知県 名古屋市], %w[佐藤 二郎 静岡県 静岡市]
 ].each.with_index(1) do |(first, second, third, fourth), i|
   user_classification.users.create!(
@@ -78,7 +78,7 @@ end
 user2 = User.second
 [
   %w[この一冊で全部わかるWeb技術の基本 1700 HTTP、データ形式からシステム開発まで。知識ゼロから全体像をつかめる。],
-  %w[基礎からのプログラミングリテラシー 2000 コンピュータのしくみから技術書の選び方まで厳選キーワードをくらべて学ぶ！]
+  %w[基礎からのプログラミングリテラシー 2000 コンピュータのしくみから技術書の選び方まで厳選キーワードをくらべて学ぶ！],
 ].each do
   user2.products.create!(
     product_name: _1,
@@ -103,3 +103,53 @@ end
     purchase_date: Time.current,
   )
 end
+
+
+
+# 発送状態
+shipment_status = ShipmentStatus.create!(shipment_status_name: "入荷待ち")
+
+# ユーザー1が持つ注文
+user1 = User.first
+user1.orders.create!(order_date: Time.now)
+  
+# ユーザー2が持つ注文
+user2 = User.second
+user2.orders.create!(order_date: Time.now)
+
+# ユーザー3が持つ注文
+user3 = User.third
+user3.orders.create!(order_date: Time.now)
+
+# オーダー1が持つ注文の詳細
+order1 = Order.first
+order1.order_details.create!(
+  product_id: 1,
+  order_id: 1,
+  shipment_status_id: 1,
+  order_detail_number: "foobar123",
+  order_quantity: 1,
+  shipment_date: Time.now
+  )
+
+# オーダー2が持つ注文の詳細
+order2 = Order.second
+order2.order_details.create!(
+  product_id: 2,
+  order_id: 2,
+  shipment_status_id: 1,
+  order_detail_number: "foobar456",
+  order_quantity: 1,
+  shipment_date: Time.now
+  )
+
+# オーダー3が持つ注文の詳細
+order3 = Order.third
+order3.order_details.create!(
+  product_id: 3,
+  order_id: 3,
+  shipment_status_id: 1,
+  order_detail_number: "foobar789",
+  order_quantity: 1,
+  shipment_date: Time.now
+  )

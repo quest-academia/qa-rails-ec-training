@@ -1,0 +1,78 @@
+<% provide(:title, "お客様情報登録") %>
+
+<div class="container" id="new_user">
+  <h3 class="text-center">お客様情報登録</h3>
+  
+  <%= form_with(model: @user, local: true) do |f| %>
+    <div class="form-group">
+      <label>氏名</label>
+      <div class="form-inline">
+        <%= f.label "姓", class: "m-1" %>
+        <%= f.text_field :last_name, class: "form-control lname" %>
+        <%= f.label "名", class: "m-1" %>
+        <%= f.text_field :first_name, class: "form-control lname" %>
+      </div>
+    </div>
+
+    <div class="form-group mt-3">
+      <%= f.label "郵便番号", class: "" %>
+      <%= f.text_field :zipcode, class: "ml-4 col-5 form-control" %>
+    </div>
+
+    <div class="form-inline" id="address">
+      <label>住所</label>
+      <div class="form-group col-12">
+        <%= f.label "都道府県", class: "col-sm-3" %>
+        <div class="col-sm-9">
+          <%= f.text_field :prefecture, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group col-12 mt-2">
+        <%= f.label "市町村区", class: "col-sm-3" %>
+        <div class="col-sm-9">
+          <%= f.text_field :municipality, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group col-12 mt-2">
+        <%= f.label "番地", class: "col-sm-3" %>
+        <div class="col-sm-9">
+          <%= f.text_field :address, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group col-12 mt-1">
+        <%= f.label "マンション・部屋番号", class: "col-sm-6" %>
+      </div>
+      <div class="form-group col-12 mt-1">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-9">
+          <%= f.text_field :apartments, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group mt-2">
+      <%= f.label "メールアドレス", class: "" %>
+      <%= f.email_field :email, class: "ml-4 form-control mailform" %>
+    </div>
+
+    <div class="form-group mt-2">
+      <%= f.label "電話番号", class: "" %>
+      <%= f.telephone_field :phone_number, class: "ml-4 form-control telform" %>
+    </div>
+
+    <div class="form-group mt-2">
+      <%= f.label "パスワード", class: "" %>
+      <%= f.password_field :password, class: "ml-4 col-8 form-control" %>
+    </div>
+
+    <div class="form-group mt-2">
+      <%= f.label "パスワード再入力", class: "" %>
+      <%= f.password_field :password_confirmation, class: "ml-4 col-8 form-control" %>
+    </div>
+
+    <div class="text-center mt-4">
+      <%= f.submit "登録", class: "btn btn-primary col-4 mb-4" %>
+      <p><%= link_to "ログインはこちらから", "#", class: "info" %></p>
+    </div>
+  <% end %>
+</div>

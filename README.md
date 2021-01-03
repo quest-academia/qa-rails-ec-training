@@ -122,3 +122,37 @@ Done in 366.80s.
 $ docker-compose up
 ```
 [[この問題についての詳細]](https://qiita.com/yama_ryoji/items/1de1f2e9e206382c4aa5)
+
+## rubocop操作
+### rubocopとは
+既定のフォーマットから違反している部分を指摘してくれるツール。
+
+（ -a オプションで簡単な違反を自動修正する。）
+
+### 使用方法（起動したコンテナにてrubocopを行う）
+- 違反している箇所を表示する。
+```
+docker-compose exec web bundle exec rubocop
+```
+- 違反している箇所を自動的に修正する。
+```
+docker-compose exec web bundle exec rubocop -a
+```
+
+### 出力の基本構文
+1箇所の違反に対し、3行でワンセットです。
+```
+問題のファイルの相対パス:行番号:列番号: 違反レベル: 違反種別: 違反メッセージ
+ここに違反した部分が表示される
+　　  ^^^　← ^で該当箇所を示してくれる
+```
+### 例）rubocop違反："コロンの後にスペースがない"の指摘
+```
+Gemfile:44:25: C: Layout/SpaceAfterColon: Space missing after colon.
+  gem 'rubocop', require:false
+```
+上記の例だと「コロンの後にスペースがない」と指摘されているので修正する必要があります。
+
+※この程度であれば rubocop -a で自動修正されます。
+
+修正後に再度rubocopコマンドを実行し、指摘が残っていないか確認を行いましょう。

@@ -3,7 +3,7 @@
 <div class="container" id="new_user">
   <h3 class="text-center">お客様情報登録</h3>
   <%= form_with(model: @user, local: true, url: signup_path) do |f| %>
-  <%= render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
     <div class="form-group">
       <label>氏名</label>
       <div class="form-inline">

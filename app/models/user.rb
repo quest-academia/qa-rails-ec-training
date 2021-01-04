@@ -3,15 +3,17 @@ class User < ApplicationRecord
   belongs_to :user_classification, optional: true
   has_many :products, dependent: :destroy
   has_many :orders
-  
-  has_secure_password
-  validates :password, presence: true, length: { in: 6..15 }, format: { with: /\A[a-z0-9]+\z/i }
-  validates :last_name, :first_name, :municipality, presence: true, length: { maximum: 10 }
-  validates :zipcode, presence: true, format: { with: /\A[a-z0-9]+\z/i }, length: { is: 7 }
-  validates :prefecture, presence: true, length: { maximum: 5 }
-  validates :address, :apartments, presence: true, length: { maximum: 15 }
+
+  validates :last_name, :first_name, :zipcode, :municipality, :prefecture, :address, :apartments, :email, :phone_number, :password, presence: true
+  validates :last_name, :first_name, length: { maximum: 10 }
+  validates :zipcode, format: { with: /\A[a-z0-9]+\z/i }, length: { is: 7 }, allow_blank: true
+  validates :municipality, length: { maximum: 10 }
+  validates :prefecture, length: { maximum: 5 }
+  validates :address, :apartments, length: { maximum: 15 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  validates :phone_number, presence: true, format: { with: /\A[a-z0-9]+\z/i }, length: { maximum: 15 }
+  validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, allow_blank: true
+  validates :phone_number, format: { with: /\A[a-z0-9]+\z/i }, length: { maximum: 15 }, allow_blank: true
   validates :delete_flag, inclusion: { in: [true, false] }
+  has_secure_password
+  validates :password, length: { in: 6..15 }, format: { with: /\A[a-z0-9]+\z/i }, allow_blank: true
 end

@@ -1,3 +1,4 @@
+/* ユーザー登録画面 */
 .info:link,
 .info:visited,
 .info:hover,
@@ -23,6 +24,7 @@
   }
 }
 
+/* レスポンシブ */
 @media screen and (max-width: 768px) {
   .text-center {
     font-size: 1.4rem;

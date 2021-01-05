@@ -1,0 +1,62 @@
+<% provide(:title, "ユーザ情報修正画面") %>
+
+
+    <div class="container" id="edit_user">
+      <h3 class="text-center">ユーザー情報修正</h3>
+
+      <%= form_for(@user) do |f| %>
+        <form class="form-inline" id="userinfo">
+
+          <div class="form-group col-12 mt-4">
+            <%= f.label :name, "氏名", class: "col-3" %>
+            <%= f.label :last_name, "姓", class: "col-1" %>
+            <%= f.text_field :last_name, class: "col-3 p-0 lname" %>
+            <%= f.label :first_name, "名", class: "col-1" %>
+            <%= f.text_field :first_name, class: "col-3 p-0 fname" %>
+          </div>
+
+          <div class="form-group col-12 mt-4">
+            <%= f.label :zipcode, "住所", class: "col-sm-3" %>
+            <%= f.label :zipcode, "〒", class: "col-sm-1 text-right" %>
+            <%= f.number_field :zipcode, class: "col-sm-3 p-0" %>
+          </div>
+
+          <div class="form-group col-12 mt-4">
+            <%= f.label :prefecture, "都道府県", class: "col-sm-4 text-right" %>
+            <%= f.text_field :prefecture, class: "col-sm-7 p-0" %>
+          </div>
+
+          <div class="form-group col-12 mt-4">
+            <%= f.label :municipality, "市町村区", class: "col-sm-4 text-right" %>
+            <%= f.text_field :municipality, class: "col-sm-7 p-0" %>
+          </div>
+
+          <div class="form-group col-12 mt-4">
+            <%= f.label :address, "番地", class: "col-sm-4 text-right" %>
+            <%= f.text_field :address, class: "col-sm-7 p-0" %>
+          </div>
+
+          <div class="form-group col-12 mt-4">
+            <%= f.label :apartments, "マンション<br>部屋番号".html_safe, class: "col-sm-4 text-right" %>
+            <%= f.text_field :apartments, class: "col-sm-7 p-0" %>
+          </div>
+
+          <div class="form-group col-12 mt-4">
+            <%= f.label :email, "メールアドレス", class: "col-sm-4" %>
+            <%= f.email_field :email, class: "col-sm-7 p-0" %>
+          </div>
+
+          <div class="form-group col-12 mt-4">
+            <%= f.label :phone_number, "電話番号", class: "col-sm-4" %>
+            <%= f.telephone_field :phone_number, class: "col-sm-7 p-0" %>
+          </div>
+        </form>
+
+      <% end %>
+
+      <div class="text-center mt-5">
+        <button type="submit" class="btn btn-primary pl-4 pr-4 fixbtn">修正</button>
+        <button type="submit" class="btn btn-danger pl-4 pr-4">退会</button>
+      </div>
+
+    </div>

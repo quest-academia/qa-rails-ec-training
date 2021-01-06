@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   private
 
     def user_params
@@ -27,4 +31,5 @@ class UsersController < ApplicationController
         :apartments, :email, :phone_number, :company_name, :password, :password_confirmation
       )
     end
+
 end

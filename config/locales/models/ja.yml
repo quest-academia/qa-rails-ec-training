@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+        user:
+          id: ID
+          last_name: 姓
+          first_name: 名
+          zipcode: 郵便番号
+          prefecture: 都道府県
+          municipality: 市区町村
+          address: 番地
+          apartments: マンション、部屋番号
+          email: メールアドレス
+          phone_number: 電話番号
+          password: パスワード

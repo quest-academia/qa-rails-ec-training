@@ -41,6 +41,9 @@ group :development, :test do
   gem 'pry-byebug', '~> 3.9.0'
   gem 'pry-doc', '~> 1.1.0'
   gem 'pry-rails', '~> 0.3.9'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :development do
@@ -54,6 +57,11 @@ group :development do
   gem 'rubocop-performance', '~> 1.9.1'
   gem 'rubocop-rails', '~> 2.8.1'
   gem 'rubocop-rspec', '~> 2.0.0'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

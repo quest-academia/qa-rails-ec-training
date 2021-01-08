@@ -4,21 +4,24 @@
           <div class="card lead p-3 mt-3">
               <p>お届け先</p>
               <div class="row">
-                <p class="px-4">〒000-0000</p>
-                <p class="pl-4">富山県南砺市井波1丁目  1-2-3</p>
+                <p class="px-4"><%= @order.user.zipcode%></p>
+                <p class="pl-4"><%= @order.user.prefecture %><%= @order.user.municipality %><%= @order.user.address %><%= @order.user.apartments %></p>
               </div>
-              <p class="pl-2 offset-sm-2">山田 太郎 様</p> 
+              <p class="pl-2 offset-sm-2"><%= @order.user.last_name %> <%= @order.user.first_name %> 様</p> 
            </div>
         </div>
       </div>
 
       <div class="my-5">
-        <p>注文番号 : 1234567890</p>
-        <p>注文状態 : 準備中</p>
+        <p>注文番号 : <%= @order.order_details.first.order_detail_number %> </p>
+        <p>注文状態 : <%= @order.order_details.first.shipment_status.shipment_status_name%> </p>
       </div>
       
       <div class="my-4 text-right">
-        <button type="button" class="btn btn-danger">注文をキャンセルする</button>
+        <% if  @order.order_details.first.shipment_status.shipment_status_name == "準備中" %>
+          <button type="button" class="btn btn-danger">注文をキャンセルする</button>
+        <% end %>
+
       </div>
 
       <div class="table-responsive-md text-center">
@@ -34,33 +37,29 @@
               <th scope="col" class="remarks">備考</th>
             </tr>
           </thead>
-          <tbody class="table-border-responsive">
+
+        <tbody class="table-border-responsive">
+          <% @order.order_details.each do |order_detail| %>         
             <tr>
               <th scope="row">1</th>
-              <td data-label="商品名">商品1</td>
-              <td data-label="商品カテゴリ">食料品</td>
-              <td data-label="値段">1000円</td>
-              <td data-label="個数">5  個</td>
-              <td data-label="小計">5000円</td>
-              <td data-label="備考" class="remarks">注文状態：準備中</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td data-label="商品名">商品2</td>
-              <td data-label="商品カテゴリ">食料品</td>
-              <td data-label="値段">2000円</td>
-              <td data-label="個数">2  個</td>
-              <td data-label="小計">4000円</td>
-              <td data-label="備考" class="remarks">注文状態：準備中</td>
-            </tr>
+              <td data-label="商品名"><%= order_detail.product.product_name %></td>
+              <td data-label="商品カテゴリ"><%= order_detail.product.category.category_name %></td>
 
+              <td data-label="値段"><%= order_detail.product.price %>円</td>
+
+              <td data-label="個数"> <%= order_detail.order_quantity %> 個</td>
+              <td data-label="小計"><%= order_detail.product.price * order_detail.order_quantity %>円</td>
+              <td data-label="備考" class="remarks">注文状態：<%= order_detail.shipment_status.shipment_status_name %></td>
+            </tr>
+        <% end %>
+    
             <tr class="table-border">
               <th></th>
               <td></td>
               <td></td>
               <td></td>
               <td class="total">合計</td>
-              <td>9000円</td>
+              <td><%= %>円</td>
               <td></td>
             </tr>
           </tbody>
@@ -68,7 +67,7 @@
       </div>
 
       <div class="my-4 text-right">
-        <button type="button" class="btn btn-success">注文履歴に戻る</button>
+        <%= link_to "注文履歴へ", "#", class: "btn btn-success" %>
       </div>
 
     </div>

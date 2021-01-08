@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  PER = 5
+  PER = 15
   
   def index
     # 商品登録しているカテゴリのみ取得

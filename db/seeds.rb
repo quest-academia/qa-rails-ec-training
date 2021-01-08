@@ -49,96 +49,53 @@ puts "SaleStatus [#{SaleStatus.count}data] Create!" # rubocop:disable Rails/Outp
 end
 puts "ProductStatus [#{ProductStatus.count}data] Create!" # rubocop:disable Rails/Output
 
-# ユーザー１が持つ商品：1〜11
+
+# ユーザー１が持つ商品＆仕入：25件（PC関連）
 user1 = User.first
 [
-  %w[MacBookPro13インチ 154800 M1チップ搭載\ 16GB\ 256GB],
-  %w[MacMini 132800 M1チップ搭載\ 16Gb\ 1TB],
-  %w[iPhone\ Mini\[64\ W\] 74800 64GB\ ホワイト],
-  %w[iPhone\ Mini\[64\ B\] 74800 64GB\ ブラック],
-  %w[iPhone\ Mini\[64\ R\] 74800 64GB\ レッド],
-  %w[iPhone\ Mini\[128\ W\] 79800 128GB\ ホワイト],
-  %w[iPhone\ Mini\[128\ B\] 79800 128GB\ ブラック],
-  %w[iPhone\ Mini\[128\ R\] 79800 128GB\ レッド],
-  %w[iPhone\ Mini\[256\ W\] 90800 256GB\ ホワイト],
-  %w[iPhone\ Mini\[256\ B\] 90800 256GB\ ブラック],
-  %w[iPhone\ Mini\[256\ R\] 90800 256GB\ レッド],
-].each do
-  user1.products.create!(
-    product_name: _1,
-    price: _2,
-    description: _3,
-    category_id: 1,
-    sale_status_id: 1,
-    product_status_id: 1,
-    delete_flag: false,
-  )
+  %w[\[APPLE\]\ MacBookPro13インチ 134800 M1チップ搭載\ 8GB\ 256GB 95000 10 AppleJapan株式会社],
+  %w[\[APPLE\]\ MacBookPro13インチ 154800 M1チップ搭載\ 8GB\ 512GB 109000 10 AppleJapan株式会社],
+  %w[\[APPLE\]\ MacBookPro13インチ 174800 M1チップ搭載\ 8GB\ 1TB 120000 10 AppleJapan株式会社],
+  %w[\[APPLE\]\ MacBookPro13インチ 154800 M1チップ搭載\ 16GB\ 256GB 109000 10 AppleJapan株式会社],
+  %w[\[APPLE\]\ MacBookPro13インチ 174800 M1チップ搭載\ 16GB\ 512GB 120000 10 AppleJapan株式会社],
+  %w[\[APPLE\]\ MacBookPro13インチ 194800 M1チップ搭載\ 16GB\ 1TB 136000 10 AppleJapan株式会社],
+  %w[\[APPLE\]\ MacMini\[8\ 512\] 92800 M1チップ搭載\ 8Gb\ 512GB 65000 15 AppleJapan株式会社],
+  %w[\[APPLE\]\ MacMini\[8\ 1T\] 112800 M1チップ搭載\ 8Gb\ 1TB 90000 15 AppleJapan株式会社],
+  %w[\[APPLE\]\ MacMini\[16\ 512\] 112800 M1チップ搭載\ 16Gb\ 512GB 90000 15 AppleJapan株式会社],
+  %w[\[APPLE\]\ MacMini\[16\ 1T\] 132800 M1チップ搭載\ 16Gb\ 1TB 93000 15 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[64\ W\] 74800 64GB\ ホワイト 52000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[64\ Bk\] 74800 64GB\ ブラック 52000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[64\ Bl\] 74800 64GB\ ブルー 52000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[64\ G\] 74800 64GB\ グリーン 52000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[64\ R\] 74800 64GB\ レッド 52000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[128\ W\] 79800 128GB\ ホワイト 58000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[128\ Bk\] 79800 128GB\ ブラック 58000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[128\ Bl\] 79800 128GB\ ブルー 58000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[128\ G\] 79800 128GB\ グリーン 58000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[128\ R\] 79800 128GB\ レッド 58000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[256\ W\] 90800 256GB\ ホワイト 63000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[256\ Bk\] 90800 256GB\ ブラック 63000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[256\ Bl\] 90800 256GB\ ブルー 63000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[256\ G\] 90800 256GB\ グリーン 63000 5 AppleJapan株式会社],
+  %w[\[APPLE\]\ iPhone\ Mini\[256\ R\] 90800 256GB\ レッド 63000 5 AppleJapan株式会社],
+].each.with_index(1) do |(first,second,third,fourth,fifth,sixth),i|
+  user1.products.create!(product_name: first, price: second, description: third, category_id: 1, sale_status_id: 1, product_status_id: 1, delete_flag: false)
+  user1.products.find(i).purchases.create!(purchase_price: fourth, purchase_quantity: fifth, purchase_company: sixth, order_date: Time.current, purchase_date: Time.current)
 end
-puts "User1 - Product [#{Product.count}data] Create!" # rubocop:disable Rails/Output
+puts "User1 - Product & Purchase [#{Product.where(user_id: 1).count}data] Create!" # rubocop:disable Rails/Output
 
-# ユーザー１が持つ商品の仕入：1〜11
-[
-  %w[109000 10 AppleJapan株式会社],
-  %w[93000 10 AppleJapan株式会社],
-  %w[52000 5 AppleJapan株式会社],
-  %w[52000 5 AppleJapan株式会社],
-  %w[52000 5 AppleJapan株式会社],
-  %w[58000 5 AppleJapan株式会社],
-  %w[58000 5 AppleJapan株式会社],
-  %w[58000 5 AppleJapan株式会社],
-  %w[63000 5 AppleJapan株式会社],
-  %w[63000 5 AppleJapan株式会社],
-  %w[63000 5 AppleJapan株式会社],
-].each.with_index(1) do |(first, second, third), i|
-  user1.products.find(i).purchases.create!(
-    purchase_price: first,
-    purchase_quantity: second,
-    purchase_company: third,
-    order_date: Time.current,
-    purchase_date: Time.current,
-  )
-end
-puts "User1 - Purchase [#{Purchase.count}data] Create!" # rubocop:disable Rails/Output
-
-# ユーザー２が持つ商品：3〜4
+# ユーザー２が持つ商品＆仕入：4件（書籍）
 user2 = User.second
 [
-  %w[この一冊で全部わかるWeb技術の基本 1700 HTTP、データ形式からシステム開発まで。知識ゼロから全体像をつかめる。],
-  %w[基礎からのプログラミングリテラシー 2000 コンピュータのしくみから技術書の選び方まで厳選キーワードをくらべて学ぶ！],
-  %w[知識ゼロからのプログラミング学習術 1650 プログラミングスキルを上げる方法を満載。Kindle版は743円！],
-  %w[プロになるためのWeb技術入門 2500 Webアプリケーションの開発方法を,インターネットの仕組みの根本原理から,じっくり解説します。],
-].each do
-  user2.products.create!(
-    product_name: _1,
-    price: _2,
-    description: _3,
-    category_id: 2,
-    sale_status_id: 1,
-    product_status_id: 1,
-    delete_flag: false,
-  )
+  %w[この一冊で全部わかるWeb技術の基本 1700 HTTP、データ形式からシステム開発まで。知識ゼロから全体像をつかめる。 1000 5 SBクリエイティブ],
+  %w[基礎からのプログラミングリテラシー 2000 コンピュータのしくみから技術書の選び方まで厳選キーワードをくらべて学ぶ！ 1200 5 技術評論社],
+  %w[知識ゼロからのプログラミング学習術 1650 プログラミングスキルを上げる方法を満載。Kindle版は743円！ 1100 5 秀和システム],
+  %w[プロになるためのWeb技術入門 2500 Webアプリケーションの開発方法を,インターネットの仕組みの根本原理から,じっくり解説します。 1750 5 技術評論社],
+].each do |first,second,third,fourth,fifth,sixth|
+  product = user2.products.create!(product_name: first, price: second, description: third, category_id: 2, sale_status_id: 1, product_status_id: 1, delete_flag: false)
+  user2.products.find(product.id).purchases.create!(purchase_price: fourth, purchase_quantity: fifth, purchase_company: sixth, order_date: Time.current, purchase_date: Time.current)
 end
-puts "User2 - Product [#{Product.count}data] Create!" # rubocop:disable Rails/Output
-
-# User2で登録した商品の先頭No取得
-regist_num = Product.where(user_id: 2).first.id
-
-# ユーザー２が持つ商品の仕入：3〜4
-[
-  %w[1000 5 SBクリエイティブ],
-  %w[1200 5 技術評論社],
-  %w[1100 5 秀和システム],
-  %w[1750 5 技術評論社],
-].each.with_index(regist_num) do |(first, second, third), i|
-  user2.products.find(i).purchases.create!(
-    purchase_price: first,
-    purchase_quantity: second,
-    purchase_company: third,
-    order_date: Time.current,
-    purchase_date: Time.current,
-  )
-end
-puts "User2 - Purchase [#{Purchase.count}data] Create!" # rubocop:disable Rails/Output
+puts "User2 - Product & Purchase [#{Product.where(user_id: 2).count}data] Create!" # rubocop:disable Rails/Output
 
 # 発送状態
 ShipmentStatus.create!(shipment_status_name: "入荷待ち")

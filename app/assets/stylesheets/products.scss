@@ -1,20 +1,43 @@
-// Place all the styles related to the Products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-
+/* 商品検索画面 */
 .product-index {
-  width: 100%;
-  margin-bottom: 30px;
   tr {
     border: solid 1px black;
     text-align: center;
-  }
-  td {
-    padding: .5rem;
   }
 }
 
 #caption-side {
   text-align: left;
   caption-side: top;
+}
+
+.bgcolor {
+  background-color: gold;
+}
+
+.vertical-align-em input,
+.vertical-align-em select{
+	vertical-align: 0em;
+}
+
+@media screen and (min-width: 769px) {
+  .product-index {
+    width: 100%;
+    margin-bottom: 30px;
+    td {
+      padding: .5rem;
+    }
+  }
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+  .product-index {
+    width: 100%;
+    margin-bottom: 2rem;
+    font-size: .8rem;
+    td {
+      padding: .5rem;
+    }
+  }
 }

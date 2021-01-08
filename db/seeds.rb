@@ -78,9 +78,13 @@ user1 = User.first
   %w[\[APPLE\]\ iPhone\ Mini\[256\ Bl\] 90800 256GB\ ブルー 63000 5 AppleJapan株式会社],
   %w[\[APPLE\]\ iPhone\ Mini\[256\ G\] 90800 256GB\ グリーン 63000 5 AppleJapan株式会社],
   %w[\[APPLE\]\ iPhone\ Mini\[256\ R\] 90800 256GB\ レッド 63000 5 AppleJapan株式会社],
-].each.with_index(1) do |(first,second,third,fourth,fifth,sixth),i|
-  user1.products.create!(product_name: first, price: second, description: third, category_id: 1, sale_status_id: 1, product_status_id: 1, delete_flag: false)
-  user1.products.find(i).purchases.create!(purchase_price: fourth, purchase_quantity: fifth, purchase_company: sixth, order_date: Time.current, purchase_date: Time.current)
+].each.with_index(1) do |(first, second, third, fourth, fifth, sixth), i|
+  user1.products.create!(
+    product_name: first, price: second, description: third, category_id: 1, sale_status_id: 1, product_status_id: 1, delete_flag: false,
+  )
+  user1.products.find(i).purchases.create!(
+    purchase_price: fourth, purchase_quantity: fifth, purchase_company: sixth, order_date: Time.current, purchase_date: Time.current,
+  )
 end
 puts "User1 - Product & Purchase [#{Product.where(user_id: 1).count}data] Create!" # rubocop:disable Rails/Output
 
@@ -91,9 +95,13 @@ user2 = User.second
   %w[基礎からのプログラミングリテラシー 2000 コンピュータのしくみから技術書の選び方まで厳選キーワードをくらべて学ぶ！ 1200 5 技術評論社],
   %w[知識ゼロからのプログラミング学習術 1650 プログラミングスキルを上げる方法を満載。Kindle版は743円！ 1100 5 秀和システム],
   %w[プロになるためのWeb技術入門 2500 Webアプリケーションの開発方法を,インターネットの仕組みの根本原理から,じっくり解説します。 1750 5 技術評論社],
-].each do |first,second,third,fourth,fifth,sixth|
-  product = user2.products.create!(product_name: first, price: second, description: third, category_id: 2, sale_status_id: 1, product_status_id: 1, delete_flag: false)
-  user2.products.find(product.id).purchases.create!(purchase_price: fourth, purchase_quantity: fifth, purchase_company: sixth, order_date: Time.current, purchase_date: Time.current)
+].each do |first, second, third, fourth, fifth, sixth|
+  product = user2.products.create!(
+    product_name: first, price: second, description: third, category_id: 2, sale_status_id: 1, product_status_id: 1, delete_flag: false,
+  )
+  user2.products.find(product.id).purchases.create!(
+    purchase_price: fourth, purchase_quantity: fifth, purchase_company: sixth, order_date: Time.current, purchase_date: Time.current,
+  )
 end
 puts "User2 - Product & Purchase [#{Product.where(user_id: 2).count}data] Create!" # rubocop:disable Rails/Output
 

@@ -1,3 +1,3 @@
 class ShipmentStatus < ApplicationRecord
-  has_many :order_details
+  has_many :order_details, dependent: :nullify
 end

@@ -6,6 +6,8 @@ class ProductsController < ApplicationController
     if params[:search].present?
       @products = Product.search(params[:search], params[:id]).page(params[:page]).per(PER)
       flash.now[:notice] = "商品が見つかりません。" if @products.blank?
+    else
+      flash.now[:notice] = "商品名を入力してください"
     end
   end
 end

@@ -124,7 +124,7 @@ user3.orders.create!(order_date: Time.now)
 
 # オーダー1が持つ注文の詳細
 order1 = Order.first
-order1.order_details.create!(
+  order1.order_details.create!(
   product_id: 1,
   shipment_status_id: 1,
   order_detail_number: "foobar123",
@@ -138,7 +138,7 @@ order1.order_details.create!(
     order_quantity: 3,
     shipment_date: Time.now
     )
-    order1.order_details.create!(
+  order1.order_details.create!(
   product_id: 2,
   shipment_status_id: 2,
   order_detail_number: "foobar777",
@@ -157,11 +157,11 @@ order2.order_details.create!(
   )
 
 # オーダー3が持つ注文の詳細
-order3 = Order.third
-order3.order_details.create!(
-  product_id: 3,
-  shipment_status_id: 1,
-  order_detail_number: "foobar789",
-  order_quantity: 1,
-  shipment_date: Time.now
-  )
+#order3 = Order.third
+#order3.order_details.create!(
+  #product_id: 3,
+  #shipment_status_id: 1,
+  #order_detail_number: "foobar789",
+  #order_quantity: 1,
+  #shipment_date: Time.now
+  #)

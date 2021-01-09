@@ -1,3 +1,4 @@
+  <% provide(:title, "show") %>
     <div class="container">
       <div class="row">
         <div class="col">
@@ -18,7 +19,7 @@
       </div>
       
       <div class="my-4 text-right">
-        <% if  @order.order_details.first.shipment_status.shipment_status_name == "準備中" %>
+        <% if  @order.order_details.third.shipment_status_id == 2 %>
           <button type="button" class="btn btn-danger">注文をキャンセルする</button>
         <% end %>
 
@@ -67,7 +68,7 @@
       </div>
 
       <div class="my-4 text-right">
-        <%= link_to "注文履歴へ", "#", class: "btn btn-success" %>
+        <%= link_to "注文履歴に戻る", "#", class: "btn btn-success" %>
       </div>
 
     </div>

@@ -19,7 +19,13 @@
   <% if @products %>
     <% if @products.count > 0 %>
       <table class="product-index">
-        <caption id="caption-side">全<%= @products.total_count %>件</caption>
+        <caption id="caption-side">
+          <% if @products.total_count > @products.count %>
+            <%= "表示: #{@products.count}件（全#{@products.total_count}件）" %>
+          <% else %>
+            <%= "全#{@products.total_count}件" %>
+          <% end %>
+        </caption>
         <thead>
           <tr class="bgcolor">
             <th>商品名</th>

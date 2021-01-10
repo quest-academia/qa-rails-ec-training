@@ -38,7 +38,7 @@
         <% @products.each do |product| %>
           <tr>
             <td class="text-left"><%= product.product_name %></td>
-            <td><%= product.category.category_name %></td>
+            <td><%= @category_name %></td>
             <td><%= product.price %></td>
             <td>
               <%= button_to "商品詳細", "#", class:"btn btn-sm btn-primary my-auto", method: :get %>

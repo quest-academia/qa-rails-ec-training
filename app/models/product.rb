@@ -8,7 +8,7 @@ class Product < ApplicationRecord
 
   validates :product_name, :price, presence: true
   # 商品検索
-  def self.search(search, id)
-    where(category_id: id).where("product_name LIKE ?", "%#{search}%")
+  def self.search(search_product, category_id)
+    where(category_id: category_id).where("product_name LIKE ?", "%#{search_product}%")
   end
 end

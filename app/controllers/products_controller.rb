@@ -5,8 +5,8 @@ class ProductsController < ApplicationController
     @categories = Category.joins(:products).where.not("products.category_id" => nil).distinct
     return unless params[:search_button]
 
-    if params[:search].present?
-      @products = Product.search(params[:search], params[:id]).page(params[:page]).per(PER)
+    if params[:search_product].present?
+      @products = Product.search(params[:search_product], params[:category_id]).page(params[:page]).per(PER)
       flash.now[:notice] = "商品が見つかりません。" if @products.blank?
     else
       flash.now[:notice] = "商品名を入力してください"

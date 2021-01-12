@@ -18,9 +18,9 @@ RSpec.describe "Signup", type: :system do
       fill_in "名", with: "太郎"
       fill_in "郵便番号", with: 1234567
       fill_in "都道府県", with: "東京都"
-      fill_in "市区町村", with: "品川区"
-      fill_in "番地", with: "南品川4-15-5"
-      fill_in "マンション・部屋番号", with: "909"
+      fill_in "市区町村", with: "テスト地区"
+      fill_in "番地", with: "テスト番地"
+      fill_in "マンション・部屋番号", with: "テストマンション"
       fill_in "メールアドレス", with: "user@test.com"
       fill_in "電話番号", with: "0311112222"
       fill_in "パスワード", with: 111111

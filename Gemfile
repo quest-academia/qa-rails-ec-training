@@ -62,8 +62,12 @@ end
 group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'shoulda-matchers'
   gem 'rspec-rails'
-  gem 'capybara'
+  gem 'capybara', '~> 3.32.0'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'launchy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

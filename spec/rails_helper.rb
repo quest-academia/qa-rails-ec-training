@@ -65,6 +65,16 @@ RSpec.configure do |config|
   
   # Setup to run system spec
   config.before(:each, type: :system) do
-    driven_by :selenium_chrome_headless
+    driven_by :selenium_chrome
+  end
+  
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome
+  end
+end
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
   end
 end

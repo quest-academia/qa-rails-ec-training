@@ -9,7 +9,7 @@
         <%= f.collection_select :category_id, @categories, :id, :category_name %><br>
         <div class="vertical-align-em">
           <%= f.label "商品名", class: "m-1" %>
-          <%= f.text_field :search_product, class:"w-50" %>
+          <%= f.text_field :search_product_name, class:"w-50" %>
           <%= f.submit '検索', name:"search_button", class:"btn btn-sm btn-primary" %>
         </div>
       </div>
@@ -38,7 +38,7 @@
         <% @products.each do |product| %>
           <tr>
             <td class="text-left"><%= product.product_name %></td>
-            <td><%= @category_name %></td>
+            <td><%= product.category.category_name %></td>
             <td><%= product.price %></td>
             <td>
               <%= button_to "商品詳細", "#", class:"btn btn-sm btn-primary my-auto", method: :get %>

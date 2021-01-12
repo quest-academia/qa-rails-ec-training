@@ -1,0 +1,42 @@
+<% provide(:title, "商品詳細画面") %>
+
+<div class="container-fluid">
+
+  <div class="container-fluid text-center">
+
+
+    <%# もし商品が存在しているならば商品を表示する %>
+    <% if @product.present? %>
+      <h1 class="title font-weight-bold mb-5">商品情報</h1>
+      <h2 class="title font-weight-bold mb-5"><%= "商品 #{ @product.id }" %></h2>
+
+      <p class="text-right"><%= "商品カテゴリ: #{@product.category[:category_name]}" %></p>
+
+      <p class="text-left">商品説明</p>
+      <p class="text-left"><%= @product.product_name %></p>
+      <br>
+      <p class="text-left"><%= "価格: #{@product.price.to_s(:delimited)} 円" %></p>
+
+      <%= form_with do |f| %>
+        <div class="d-flex justify-content-center">
+            <%= f.label :unit_sold, "販売個数" %>
+            <%= f.number_field :unit_sold, min: 1 %>
+            <p>個</p>
+            <%= f.submit "カートへ", class: "btn btn-lg btn-primary" %>
+        </div>
+      <% end %>
+
+    <%# 該当商品が存在しないなら表示をする %>
+    <% else %>
+      <h1 class="col-12 title font-weight-bold mb-5"><%= "該当商品が見つかりませんでした…" %></h1>
+      <h2 class="title font-weight-bold mb-5"><%= "商品検索画面に戻り、やり直して下さい" %></h2>
+
+      <%= form_with do |f| %>
+        <div class="d-flex justify-content-center">
+          <%= f.submit "商品検索画面へ", class: "btn btn-lg btn-primary" %>
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>

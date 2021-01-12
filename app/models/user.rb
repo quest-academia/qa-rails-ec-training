@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
   belongs_to :user_classification, optional: true
   has_many :products, dependent: :destroy
-  has_many :orders
+  has_many :orders, dependent: :destroy
 
   validates :last_name, :first_name, :zipcode, :municipality, :prefecture, :address, :apartments, :email, :phone_number, presence: true
   validates :last_name, :first_name, length: { maximum: 10 }

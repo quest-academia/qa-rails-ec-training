@@ -41,8 +41,6 @@
             <td><%= product.category.category_name %></td>
             <td><%= product.price %></td>
             <td>
-              <%#= button_to "商品詳細", "#", class:"btn btn-sm btn-primary my-auto", method: :get %>
-              <%#= button_to "商品詳細", {controller: "products", action: "show"}, {method: :get}, class:"btn btn-sm btn-primary my-auto" %>
               <%= button_to "商品詳細", product_path(product), method: :get, class:"btn btn-sm btn-primary my-auto" %>
             </td>
           </tr>

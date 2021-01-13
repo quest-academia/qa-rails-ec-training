@@ -19,7 +19,7 @@
       </div>
       
       <div class="my-4 text-right">
-        <% if  @order.order_details.third.shipment_status_id == 2 %>
+        <% if @array.include?("準備中") %>
           <button type="button" class="btn btn-danger">注文をキャンセルする</button>
         <% end %>
 
@@ -60,7 +60,7 @@
               <td></td>
               <td></td>
               <td class="total">合計</td>
-              <td><%= %>円</td>
+              <td><%= @total %>円</td>
               <td></td>
             </tr>
           </tbody>

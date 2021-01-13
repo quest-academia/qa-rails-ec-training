@@ -5,7 +5,7 @@
       <%= link_to "#{current_user.last_name} #{current_user.first_name} さん", user_path(current_user), class:"ml-auto username" %>
     <% else %>
       <ul class="nav nav-right">
-        <li class="mr-4"><%= link_to 'ログイン', '#', class:"hmenu" %></li>
+        <li class="mr-4"><%= link_to 'ログイン', login_path, class:"hmenu" %></li>
         <li><%= link_to '新規登録', signup_path, class:"hmenu" %></li>
       </ul>
     <% end %>

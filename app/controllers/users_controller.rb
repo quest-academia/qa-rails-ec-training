@@ -44,5 +44,4 @@ class UsersController < ApplicationController
         :apartments, :email, :phone_number, :company_name, :password, :password_confirmation
       )
     end
-
 end

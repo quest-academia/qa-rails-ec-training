@@ -21,7 +21,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-
   end
 
   def update
@@ -31,9 +30,8 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash.now[:danger] = "正しい値を入力してください。"
-      render 'edit'
+      render "edit"
     end
-
   end
 
   private

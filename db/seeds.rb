@@ -49,7 +49,6 @@ puts "SaleStatus [#{SaleStatus.count}data] Create!" # rubocop:disable Rails/Outp
 end
 puts "ProductStatus [#{ProductStatus.count}data] Create!" # rubocop:disable Rails/Output
 
-
 # ユーザー１が持つ商品＆仕入：25件（PC関連）
 user1 = User.first
 [

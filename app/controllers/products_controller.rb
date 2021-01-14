@@ -12,4 +12,8 @@ class ProductsController < ApplicationController
       flash.now[:notice] = "商品名を入力してください"
     end
   end
+
+  def show
+    @product = Product.find_by(id: params[:id])
+  end
 end

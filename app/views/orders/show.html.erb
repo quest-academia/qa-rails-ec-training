@@ -19,10 +19,7 @@
       </div>
       
       <div class="my-4 text-right">
-        <% if @array.include?("準備中") %>
-          <button type="button" class="btn btn-danger">注文をキャンセルする</button>
-        <% end %>
-
+        <%= cancel_button_indicate %>
       </div>
 
       <div class="table-responsive-md text-center">

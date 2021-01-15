@@ -8,8 +8,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user
     else
-      # エラーメッセージを作成する
-      flash[:danger] = 'メールアドレスとパスワードが正しくありません' # 本当は正しくない
+      flash[:danger] = 'メールアドレスとパスワードが正しくありません'
       render 'new'
     end
   end
@@ -19,5 +18,4 @@ class SessionsController < ApplicationController
     flash[:danger] = 'ログアウトしました'
     redirect_to root_url
   end
-  
 end

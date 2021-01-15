@@ -1,0 +1,55 @@
+<% provide(:title, "商品検索画面") %>
+
+<div class="container">
+  <h3 class="text-center">商品検索画面</h3>
+  <div class="d-flex justify-content-center">
+    <%= form_with(url: products_path, method: :get, local: true, html: {class:"w-100"}) do |f| %>
+      <div class="text-left mx-3">
+        <%= f.label "商品カテゴリー", class: "m-1" %>
+        <%= f.collection_select :category_id, @categories, :id, :category_name %><br>
+        <div class="vertical-align-em">
+          <%= f.label "商品名", class: "m-1" %>
+          <%= f.text_field :search_product_name, class:"w-50" %>
+          <%= f.submit '検索', name:"search_button", class:"btn btn-sm btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @products.present? %>
+    <table class="product-index">
+      <caption id="caption-side">
+        <% if @products.total_count > @products.count %>
+          <%= "表示: #{@products.count}件（全#{@products.total_count}件）" %>
+        <% else %>
+          <%= "全#{@products.total_count}件" %>
+        <% end %>
+      </caption>
+      <thead>
+        <tr class="bgcolor">
+          <th>商品名</th>
+          <th>商品カテゴリ</th>
+          <th>価格</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td class="text-left"><%= product.product_name %></td>
+            <td><%= product.category.category_name %></td>
+            <td><%= product.price %></td>
+            <td>
+              <%= button_to "商品詳細", product_path(product), method: :get, class:"btn btn-sm btn-primary my-auto" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="pagination justify-content-center">
+      <%= paginate @products %>
+    </div>
+  <% end %>
+</div>

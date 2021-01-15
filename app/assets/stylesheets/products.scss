@@ -1,0 +1,43 @@
+/* 商品検索画面 */
+.product-index {
+  tr {
+    border: solid 1px black;
+    text-align: center;
+  }
+}
+
+#caption-side {
+  text-align: left;
+  caption-side: top;
+}
+
+.bgcolor {
+  background-color: gold;
+}
+
+.vertical-align-em input,
+.vertical-align-em select{
+	vertical-align: 0em;
+}
+
+@media screen and (min-width: 769px) {
+  .product-index {
+    width: 100%;
+    margin-bottom: 30px;
+    td {
+      padding: .5rem;
+    }
+  }
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+  .product-index {
+    width: 100%;
+    margin-bottom: 2rem;
+    font-size: .8rem;
+    td {
+      padding: .5rem;
+    }
+  }
+}

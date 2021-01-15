@@ -5,7 +5,7 @@
       <%= link_to "#{current_user.last_name} #{current_user.first_name} さん", user_path(current_user), class:"ml-auto username" %>
     <% else %>
       <ul class="nav nav-right">
-        <li class="mr-4"><%= link_to 'ログイン', '#', class:"hmenu" %></li>
+        <li class="mr-4"><%= link_to 'ログイン', login_path, class:"hmenu" %></li>
         <li><%= link_to '新規登録', signup_path, class:"hmenu" %></li>
       </ul>
     <% end %>
@@ -14,7 +14,7 @@
     <div class="container">
       <div class="ml-auto navmenu">
         <div class="d-flex justify-content-around w-100">
-          <%= link_to '商品検索', '#', class:"hmenu" %>
+          <%= link_to '商品検索', products_path, class:"hmenu" %>
           <%= link_to 'カート', '#', class:"hmenu" %>
           <%= link_to '注文履歴', '#', class:"hmenu" %>
           <%= link_to 'ユーザ情報', '#', class:"hmenu" %>

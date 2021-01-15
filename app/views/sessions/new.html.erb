@@ -4,14 +4,12 @@
     <div class="form-group">
       <%=form_for(:session, url: login_path) do |f| %>
         <div class="text-left mb-4">        
-          <%=f.label :email %>
-            メールアドレス
+          <%=f.label :email, "メールアドレス" %>
           <%=f.email_field :email, class: "form-control", id: "inputEmail" %>
         </div>
 
         <div class="text-left mb-5">
-          <%=f.label :password %> 
-            パスワード
+          <%=f.label :password, "パスワード" %>
           <%=f.password_field :password, class: "form-control", id: "inputPassword" %>
         </div>
 
@@ -20,6 +18,6 @@
         </div>
       <% end %>
     </div>
-          <%= link_to "まだ登録がお済みでない方はこちら", signup_path %>
+    <%= link_to "まだ登録がお済みでない方はこちら", signup_path %>
   </div>
 </div>

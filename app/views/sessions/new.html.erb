@@ -2,21 +2,22 @@
   <div class="form-signin">
   <h4 class="h3 my-5 font-weight-normal">ログイン画面</h4>
     <div class="form-group">
+      <%=form_for(:session, url: login_path) do |f| %>
+        <div class="text-left mb-4">        
+          <%=f.label :email, "メールアドレス" %>
+          <%=f.email_field :email, class: "form-control", id: "inputEmail" %>
+        </div>
 
-      <div class="text-left mb-4">
-        <label for="email">メールアドレス</label>
-        <input type="email" id="inputEmail" class="form-control" required autofocus>
-      </div>
+        <div class="text-left mb-5">
+          <%=f.label :password, "パスワード" %>
+          <%=f.password_field :password, class: "form-control", id: "inputPassword" %>
+        </div>
 
-      <div class="text-left mb-5">
-        <label for="password">パスワード</label>
-        <input type="password" class="form-control" id="inputPassword">
-      </div>
-
-      <div class="mb-4">
-        <%= link_to "ログイン", "#", class: "btn  btn-primary"%>
-      </div>
+        <div class="mb-4">
+          <%=f.submit "ログイン", class: "btn  btn-primary"%>
+        </div>
+      <% end %>
     </div>
-        <%= link_to "まだ登録がお済みでない方はこちら", "#" %>
+    <%= link_to "まだ登録がお済みでない方はこちら", signup_path %>
   </div>
 </div>

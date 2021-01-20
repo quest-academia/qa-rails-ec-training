@@ -110,7 +110,7 @@ puts "User2 - Product & Purchase [#{Product.where(user_id: 2).count}data] Create
 
 # ユーザー1が持つ注文
 user1 = User.first
-user1.orders.create!(order_date: Time.zone.now)
+user1.orders.create!(order_date: Time.current)
 shipment_status = ShipmentStatus.create!(shipment_status_name: "入荷待ち")
 puts "ShipmentStatus Create!" # rubocop:disable Rails/Output
 
@@ -135,21 +135,21 @@ order1.order_details.create!(
   shipment_status_id: 1,
   order_detail_number: "foobar123",
   order_quantity: 1,
-  shipment_date: Time.zone.now,
+  shipment_date: Time.current,
 )
 order1.order_details.create!(
   product_id: 1,
   shipment_status_id: 1,
   order_detail_number: "foobar999",
   order_quantity: 3,
-  shipment_date: Time.zone.now,
+  shipment_date: Time.current,
 )
 order1.order_details.create!(
   product_id: 2,
   shipment_status_id: 2,
   order_detail_number: "foobar777",
   order_quantity: 2,
-  shipment_date: Time.zone.now,
+  shipment_date: Time.current,
 )
 
 # オーダー2が持つ注文の詳細

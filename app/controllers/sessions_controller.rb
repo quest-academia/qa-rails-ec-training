@@ -8,14 +8,14 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user
     else
-      flash[:danger] = 'メールアドレスとパスワードが正しくありません'
-      render 'new'
+      flash[:danger] = "メールアドレスとパスワードが正しくありません"
+      render "new"
     end
   end
 
   def destroy
     log_out if logged_in?
-    flash[:danger] = 'ログアウトしました'
+    flash[:danger] = "ログアウトしました"
     redirect_to root_url
   end
 end

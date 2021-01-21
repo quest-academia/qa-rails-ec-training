@@ -1,0 +1,60 @@
+class CartsController < ApplicationController
+  def show
+    # view用：カート情報を配列に格納
+    if session[:cart].present?
+      @cart = Array.new
+      session[:cart].each do |cart|
+        product = Product.find(cart["product_id"])
+        category_name = Category.find(product.category_id).category_name
+        subtotal = product.price * cart["quantity"].to_i
+        @cart.push([product.product_name, category_name, product.price, cart["quantity"].to_i, subtotal])
+      end
+      # カート内の合計を計算
+      total_amount
+    end
+  end
+
+  def add_cart
+    if session[:cart].nil?
+      session[:cart] = [{product_id: params[:product_id], quantity: params[:quantity].to_i}]
+    else
+      # カート内に既にある商品（数量追加）
+      match_flag = false
+      session[:cart].each do |cart|
+        if cart["product_id"] == params[:product_id]
+          cart["quantity"] += params[:quantity].to_i
+          match_flag = true
+        end
+      end
+      # 初めてカートに入れる商品
+      unless match_flag
+        session[:cart].push({product_id: params[:product_id], quantity: params[:quantity].to_i})
+      end
+    end
+    redirect_to carts_show_path
+  end
+
+  def change_item
+    # if params[:commit] == "変更"
+    #   session[:cart].each do |cart|
+    #     if cart["product_id"] == (Product.find_by(product_name: params[:product_name]).id).to_s
+    #       cart["quantity"] = params[:quantity]
+    #     end
+    #   end
+    if params[:commit] == "削除"
+      destroy
+    end
+    redirect_to carts_show_path
+  end
+
+  def destroy
+    session[:cart].delete_at(params[:product_index].to_i - 1)
+  end
+
+  def total_amount
+    @total_amount = 0
+    @cart.each do |cart_item|
+      @total_amount += cart_item[4].to_i
+    end
+  end
+end

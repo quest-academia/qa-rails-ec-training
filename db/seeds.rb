@@ -32,7 +32,7 @@ end
 puts "User [#{User.count}data] Create!" # rubocop:disable Rails/Output
 
 # カテゴリー
-%w[PC関連 書籍 衣料品 食料品].each do
+%w[食料品 書籍 衣料品].each do
   Category.create!(category_name: _1)
 end
 puts "Category [#{Category.count}data] Create!" # rubocop:disable Rails/Output
@@ -52,31 +52,30 @@ puts "ProductStatus [#{ProductStatus.count}data] Create!" # rubocop:disable Rail
 # ユーザー１が持つ商品＆仕入：25件（PC関連）
 user1 = User.first
 [
-  %w[\[APPLE\]\ MacBookPro13インチ 134800 M1チップ搭載\ 8GB\ 256GB 95000 10 AppleJapan株式会社],
-  %w[\[APPLE\]\ MacBookPro13インチ 154800 M1チップ搭載\ 8GB\ 512GB 109000 10 AppleJapan株式会社],
-  %w[\[APPLE\]\ MacBookPro13インチ 174800 M1チップ搭載\ 8GB\ 1TB 120000 10 AppleJapan株式会社],
-  %w[\[APPLE\]\ MacBookPro13インチ 154800 M1チップ搭載\ 16GB\ 256GB 109000 10 AppleJapan株式会社],
-  %w[\[APPLE\]\ MacBookPro13インチ 174800 M1チップ搭載\ 16GB\ 512GB 120000 10 AppleJapan株式会社],
-  %w[\[APPLE\]\ MacBookPro13インチ 194800 M1チップ搭載\ 16GB\ 1TB 136000 10 AppleJapan株式会社],
-  %w[\[APPLE\]\ MacMini\[8\ 512\] 92800 M1チップ搭載\ 8Gb\ 512GB 65000 15 AppleJapan株式会社],
-  %w[\[APPLE\]\ MacMini\[8\ 1T\] 112800 M1チップ搭載\ 8Gb\ 1TB 90000 15 AppleJapan株式会社],
-  %w[\[APPLE\]\ MacMini\[16\ 512\] 112800 M1チップ搭載\ 16Gb\ 512GB 90000 15 AppleJapan株式会社],
-  %w[\[APPLE\]\ MacMini\[16\ 1T\] 132800 M1チップ搭載\ 16Gb\ 1TB 93000 15 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[64\ W\] 74800 64GB\ ホワイト 52000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[64\ Bk\] 74800 64GB\ ブラック 52000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[64\ Bl\] 74800 64GB\ ブルー 52000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[64\ G\] 74800 64GB\ グリーン 52000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[64\ R\] 74800 64GB\ レッド 52000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[128\ W\] 79800 128GB\ ホワイト 58000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[128\ Bk\] 79800 128GB\ ブラック 58000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[128\ Bl\] 79800 128GB\ ブルー 58000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[128\ G\] 79800 128GB\ グリーン 58000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[128\ R\] 79800 128GB\ レッド 58000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[256\ W\] 90800 256GB\ ホワイト 63000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[256\ Bk\] 90800 256GB\ ブラック 63000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[256\ Bl\] 90800 256GB\ ブルー 63000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[256\ G\] 90800 256GB\ グリーン 63000 5 AppleJapan株式会社],
-  %w[\[APPLE\]\ iPhone\ Mini\[256\ R\] 90800 256GB\ レッド 63000 5 AppleJapan株式会社],
+  %w[\[果物\]\ 葡萄（ぶどう） 200 山梨県 70 10 株式会社くだもの],
+  %w[\[果物\]\ 檸檬（レモン） 100 広島県 70 10 株式会社くだもの],
+  %w[\[果物\]\ 檬果（マンゴー） 600 沖縄県 420 10 株式会社くだもの],
+  %w[\[果物\]\ 甜瓜（メロン） 2000 茨城県 1400 10 株式会社くだもの],
+  %w[\[果物\]\ 甘蕉（バナナ） 100 エクアドル産 70 10 株式会社くだもの],
+  %w[\[果物\]\ 林檎（りんご） 100 青森県 70 10 株式会社くだもの],
+  %w[\[果物\]\ 蜜柑（みかん） 200 愛媛県 70 10 株式会社くだもの],
+  %w[\[果物\]\ 鳳梨（パイナップル） 1000 ハワイ\ オアフ島 700 10 株式会社くだもの],
+  %w[\[果物\]\ 果物時計草（パッションフルーツ） 200 ブラジル産 140 10 株式会社くだもの],
+  %w[\[果物\]\ 桜桃（さくらんぼ） 300 山形県 210 10 株式会社くだもの],
+  %w[\[果物\]\ 栗（くり） 200 茨城県 140 10 株式会社くだもの],
+  %w[\[果物\]\ 枇杷（びわ） 300 長崎県 210 10 株式会社くだもの],
+  %w[\[果物\]\ 茘枝（ライチ） 200 鹿児島県 140 10 株式会社くだもの],
+  %w[\[果物\]\ 無花果（イチジク） 200 愛知県 140 10 株式会社くだもの],
+  %w[\[野菜\]\ 馬鈴薯（じゃがいも） 200 北海道 140 10 株式会社やさい],
+  %w[\[野菜\]\ 苦瓜（ゴーヤ） 100 沖縄県 70 10 株式会社やさい],
+  %w[\[野菜\]\ 糸瓜（ヘチマ） 100 沖縄県 70 10 株式会社やさい],
+  %w[\[野菜\]\ 蕃茄（トマト） 300 熊本県 70 10 株式会社やさい],
+  %w[\[野菜\]\ 萵苣（レタス） 150 長野県 110 10 株式会社やさい],
+  %w[\[野菜\]\ 牛蒡（ゴボウ） 100 青森県 70 10 株式会社やさい],
+  %w[\[野菜\]\ 玉蜀黍（とうもろこし） 200 北海道 140 10 株式会社やさい],
+  %w[\[野菜\]\ 陸蓮根（おくら） 100 鹿児島県 70 10 株式会社やさい],
+  %w[\[野菜\]\ 鰐梨（アボカド） 100 メキシコ産 70 10 株式会社やさい],
+  %w[\[野菜\]\ 和蘭芹（パセリ） 100 長野県 70 10 株式会社やさい],
 ].each.with_index(1) do |(first, second, third, fourth, fifth, sixth), i|
   user1.products.create!(
     product_name: first, price: second, description: third, category_id: 1, sale_status_id: 1, product_status_id: 1, delete_flag: false,

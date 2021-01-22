@@ -21,8 +21,7 @@
       カートに商品はありません
     </h3>
   <% else %>
-    <%= form_with(url: carts_change_item_path, method: :post, local: true) do |f| %>
-    <div class="my-5 table-responsive-md text-center">
+    <div class="my-5 table-responsive-md text-center size">
       <table class="table table-borderless text-nowrap">
         <thead>
           <tr class="thead table-border">
@@ -42,12 +41,14 @@
                 <td data-label="商品名"><%= cart[0] %></td>
                 <td data-label="商品カテゴリ"><%= cart[1] %></td>
                 <td data-label="値段"><%= cart[2] %></td>
-                <td data-label="個数"><%= cart[3] %> 個</td>
-                <td data-label="小計"><%= cart[4] %>円</td>
-                <td>
-                  <%= hidden_field_tag :product_index, i %>
-                  <%= f.submit "削除", class: "btn btn-sm btn-danger" %>
-                </td>
+                <%= form_with(url: carts_change_quantity_path(i), method: :patch, local: true) do |f| %>
+                  <td><%= f.number_field :quantity, value: cart[3], min: 1 %> 個</td>
+                  <td data-label="小計"><%= cart[4] %>円</td>
+                  <td><%= f.submit "変更", class: "btn btn-sm btn-primary" %></td>
+                <% end %>
+                <%= form_with(url: carts_path(i), method: :delete, local: true) do |f| %>
+                  <td><%= f.submit "削除", class: "btn btn-sm btn-danger" %></td>
+                <% end %>
               </tr>
             <% end %>
           <% end %>
@@ -62,7 +63,6 @@
         </tbody>
       </table>
     </div>
-    <% end %>
 
     <div class="text-center mt-5">
       <%= link_to "買い物を続ける", products_path, class: "btn btn-success pl-2 pr-2 fixbtn" %>

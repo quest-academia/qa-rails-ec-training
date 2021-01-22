@@ -14,14 +14,14 @@ class OrdersController < ApplicationController
         session[:cart].each do |cart|
           order.order_details.create!(
             product_id: cart["product_id"],
-            shipment_status_id: 1,
+            shipment_status_id: 2,
             order_detail_number: sprintf("%04d", OrderDetail.count + 1),
             order_quantity: cart["quantity"],
             shipment_date: Time.current,
           )
         end
         # 注文完了後、カートを空にする
-        session[:cart] = nil
+        session[:cart].clear
       end
     end
     redirect_to purchase_completed_path

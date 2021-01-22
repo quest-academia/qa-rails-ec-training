@@ -15,18 +15,12 @@ class CartsController < ApplicationController
   end
 
   def add_cart
-    if session[:cart].nil?
+    if session[:cart].blank?
       session[:cart] = [{product_id: params[:product_id], quantity: params[:quantity].to_i}]
     else
       # カート内に既にある商品（数量追加）
       match_flag = false
-      session[:cart].each do |cart|
-        if cart["product_id"] == params[:product_id]
-          cart["quantity"] += params[:quantity].to_i
-          match_flag = true
-        end
-      end
-      # 初めてカートに入れる商品
+      session[:cart].map {|cart| (cart["quantity"] += params[:quantity].to_i) && (match_flag = true) if cart["product_id"] == params[:product_id] }
       unless match_flag
         session[:cart].push({product_id: params[:product_id], quantity: params[:quantity].to_i})
       end
@@ -34,21 +28,14 @@ class CartsController < ApplicationController
     redirect_to carts_show_path
   end
 
-  def change_item
-    # if params[:commit] == "変更"
-    #   session[:cart].each do |cart|
-    #     if cart["product_id"] == (Product.find_by(product_name: params[:product_name]).id).to_s
-    #       cart["quantity"] = params[:quantity]
-    #     end
-    #   end
-    if params[:commit] == "削除"
-      destroy
-    end
+  def change_quantity
+    session[:cart][params[:array_index].to_i - 1]["quantity"] = params[:quantity]
     redirect_to carts_show_path
   end
 
   def destroy
-    session[:cart].delete_at(params[:product_index].to_i - 1)
+    session[:cart].delete_at(params[:array_index].to_i - 1)
+    redirect_to carts_show_path
   end
 
   def total_amount

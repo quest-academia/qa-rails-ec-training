@@ -13,7 +13,7 @@
       <br>
       <p class="text-left"><%= "価格: #{@product.price.to_s(:delimited)} 円" %></p>
 
-      <%= form_with(url: carts_add_cart_path, method: :get, local: true) do |f| %>
+      <%= form_with(url: carts_add_cart_path, method: :post, local: true) do |f| %>
         <div class="d-flex justify-content-center">
           <%= f.label :quantity, "購入個数" %>
           <%= f.number_field :quantity, value: 1, min: 1 %>

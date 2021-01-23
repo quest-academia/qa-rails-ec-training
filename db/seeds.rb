@@ -111,7 +111,6 @@ shipment_status2 = ShipmentStatus.create!(shipment_status_name: "準備中")
 # ユーザー1が持つ注文
 user1 = User.first
 user1.orders.create!(order_date: Time.current)
-shipment_status = ShipmentStatus.create!(shipment_status_name: "入荷待ち")
 puts "ShipmentStatus Create!" # rubocop:disable Rails/Output
 
 # ユーザー1が持つ注文

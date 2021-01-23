@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:show, :edit, :update]
+  before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -37,6 +37,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    binding.pry
+    redirect_to :root
+  end
+
   private
 
     def user_params
@@ -45,4 +52,5 @@ class UsersController < ApplicationController
         :apartments, :email, :phone_number, :company_name, :password, :password_confirmation
       )
     end
+
 end

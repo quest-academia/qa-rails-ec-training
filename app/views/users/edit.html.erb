@@ -53,9 +53,7 @@
 
         <div class="text-center mt-5">
           <%= f.submit "修正", class: "btn btn-primary pl-4 pr-4 fixbtn" %>
-          <% if current_user %>
-              <%= link_to "退会", user_path(current_user.id), method: :delete, data: { confirm: "ユーザーデータが全て削除されます。本当に退会しますか？" }, class: "btn btn-danger pl-4 pr-4" %>
-          <% end %>
+          <%= link_to "退会", user_path(current_user.id), method: :delete, data: { confirm: "ユーザーデータが全て削除されます。本当に退会しますか？" }, class: "btn btn-danger pl-4 pr-4" %>
         </div>
 
       <% end %>

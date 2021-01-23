@@ -105,8 +105,7 @@ end
 puts "User2 - Product & Purchase [#{Product.where(user_id: 2).count}data] Create!" # rubocop:disable Rails/Output
 
 # 発送状態
-shipment_status = ShipmentStatus.create!(shipment_status_name: "入荷待ち")
-shipment_status2 = ShipmentStatus.create!(shipment_status_name: "準備中")
+ShipmentStatus.create!(shipment_status_name: "入荷待ち")
 
 # ユーザー1が持つ注文
 user1 = User.first

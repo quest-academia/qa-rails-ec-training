@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :logged_in_user
+
   PER = 15
   def index
     # 商品登録しているカテゴリのみ取得

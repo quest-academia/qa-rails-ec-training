@@ -103,22 +103,15 @@ user2 = User.second
 end
 puts "User2 - Product & Purchase [#{Product.where(user_id: 2).count}data] Create!" # rubocop:disable Rails/Output
 
-# 発送状態
-# shipment_status = ShipmentStatus.create!(shipment_status_name: "入荷待ち")
-# shipment_status2 = ShipmentStatus.create!(shipment_status_name: "準備中")
-
-# ユーザー1が持つ注文
-user1 = User.first
-user1.orders.create!(order_date: Time.current)
-shipment_status = ShipmentStatus.create!(shipment_status_name: "入荷待ち")
+%w[入荷待ち 準備中].each do
+  ShipmentStatus.create!(shipment_status_name: _1)
+end
 puts "ShipmentStatus Create!" # rubocop:disable Rails/Output
 
 # ユーザー1が持つ注文
-user1 = User.first
 user1.orders.create!(order_date: Time.current)
 
 # ユーザー2が持つ注文
-user2 = User.second
 user2.orders.create!(order_date: Time.current)
 
 # ユーザー3が持つ注文

@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   include OrdersHelper
-  before_action :logged_in_user, only: [:show]
-  before_action :correct_users_order, only: [:show]
+  before_action :logged_in_user
+  before_action :correct_users_order
 
   def show
     @order = current_user.orders.find_by(id: params[:id])
@@ -31,13 +31,8 @@ class OrdersController < ApplicationController
 
   # 注文はログインユーザーのものかどうか確認
   def correct_users_order
-    if Order.exists?(id: params[:id])
-      unless current_user.id == Order.find(params[:id]).user_id
-        flash[:danger] = "他人の情報にアクセスすることはできません。"
-        redirect_to root_url
-      end
-    else
-      flash[:danger] = "商品が存在しません"
+    unless current_user.id == Order.find(params[:id]).user_id
+      flash[:danger] = "他人の情報にアクセスすることはできません。"
       redirect_to root_url
     end
   end

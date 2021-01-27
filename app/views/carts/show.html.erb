@@ -1,0 +1,72 @@
+<% provide(:title, "カート内一覧表示") %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card lead p-3 mt-3">
+        <p>お届け先</p>
+        <div class="row">
+          <p class="px-4"><%= current_user.zipcode %></p>
+          <p class="pl-4">
+            <%= current_user.prefecture %><%= current_user.municipality %><%= current_user.address %>
+          </p>
+        </div>
+        <p class="pl-2 offset-sm-2"><%= current_user.last_name %><%= current_user.first_name %> 様</p> 
+      </div>
+    </div>
+  </div>
+  
+  <% if @cart.nil? %>
+    <h3 class="text-center">
+      カートに商品はありません
+    </h3>
+  <% else %>
+    <div class="my-5 table-responsive-md text-center size">
+      <table class="table table-borderless text-nowrap">
+        <thead>
+          <tr class="thead table-border">
+            <th scope="col">No</th>
+            <th scope="col">商品名</th>
+            <th scope="col">商品カテゴリ</th>
+            <th scope="col">値段</th>
+            <th scope="col">個数</th>
+            <th scope="col">小計</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-responsive">
+          <% if @cart.present? %>
+            <% @cart.each.with_index(1) do |cart, i| %>
+              <tr>
+                <th scope="row"><%= i %></th>
+                <td data-label="商品名"><%= cart[0] %></td>
+                <td data-label="商品カテゴリ"><%= cart[1] %></td>
+                <td data-label="値段"><%= cart[2] %></td>
+                <%= form_with(url: carts_change_quantity_path(i), method: :patch, local: true) do |f| %>
+                  <td><%= f.number_field :quantity, value: cart[3], min: 1 %> 個</td>
+                  <td data-label="小計"><%= cart[4] %>円</td>
+                  <td><%= f.submit "変更", class: "btn btn-sm btn-primary" %></td>
+                <% end %>
+                <%= form_with(url: carts_path(i), method: :delete, local: true) do |f| %>
+                  <td><%= f.submit "削除", class: "btn btn-sm btn-danger" %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          <% end %>
+          <tr class="table-border">
+            <th></th>
+            <td id="responsive-none"></td>
+            <td id="responsive-none"></td>
+            <td id="responsive-none"></td>
+            <td class="total">合計</td>
+            <td><%= @total_amount %>円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text-center mt-5">
+      <%= link_to "買い物を続ける", products_path, class: "btn btn-success pl-2 pr-2 cart_button" %>
+      <%= link_to "注文を確定する", orders_path, method: :post, class: "btn btn-primary pl-2 pr-2" %>
+    </div>
+  <% end %>
+</div>

@@ -40,9 +40,9 @@
             </thead>
 
             <tbody class="table-border-responsive">
-              <% @order.order_details.each do |order_detail| %>
+              <% @order.order_details.each.with_index(1) do |order_detail, i| %>
                 <tr>
-                  <th scope="row">1</th>
+                  <th scope="row"><%= i %></th>
                   <td data-label="商品名"><%= order_detail.product.product_name %></td>
                   <td data-label="商品カテゴリ"><%= order_detail.product.category.category_name %></td>
 

@@ -4,7 +4,7 @@ module OrdersHelper
     array = @order.order_details.map {|order_detail| order_detail.shipment_status.shipment_status_name }
 
     if array.include?("準備中")
-      link_to "注文をキャンセルする", "#", class: "btn btn-danger"
+      link_to "注文をキャンセルする", order_path, method: :delete, class: "btn btn-danger"
     end
   end
 end

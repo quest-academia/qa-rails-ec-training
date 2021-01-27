@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:show, :edit, :update]
+  before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -35,6 +35,12 @@ class UsersController < ApplicationController
       flash.now[:danger] = "正しい値を入力してください。"
       render "edit"
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy!
+    redirect_to :root
   end
 
   private

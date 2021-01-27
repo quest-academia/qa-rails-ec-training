@@ -1,4 +1,4 @@
-  
+
     <div class="container">
 
       <% if @order %>
@@ -11,7 +11,7 @@
                 <p class="px-4"><%= @order.user.zipcode%></p>
                 <p class="pl-4"><%= @order.user.prefecture %><%= @order.user.municipality %><%= @order.user.address %><%= @order.user.apartments %></p>
               </div>
-              <p class="pl-2 offset-sm-2"><%= @order.user.last_name %> <%= @order.user.first_name %> 様</p> 
+              <p class="pl-2 offset-sm-2"><%= @order.user.last_name %> <%= @order.user.first_name %> 様</p>
             </div>
           </div>
         </div>
@@ -20,7 +20,7 @@
           <p>注文番号 : <%= @order.order_details.first.order_detail_number %> </p>
           <p>注文状態 : <%= @order.order_details.first.shipment_status.shipment_status_name%> </p>
         </div>
-      
+
         <div class="my-4 text-right">
           <%= cancel_button_indicate %>
         </div>
@@ -53,7 +53,7 @@
                   <td data-label="備考" class="remarks">注文状態：<%= order_detail.shipment_status.shipment_status_name %></td>
                 </tr>
               <% end %>
-      
+
               <tr class="table-border">
                 <th></th>
                 <td></td>
@@ -70,7 +70,7 @@
         <div class="my-4 text-right">
           <%= link_to "注文履歴に戻る", "#", class: "btn btn-success" %>
         </div>
-    
+
       <% else %>
         <%= render 'blank' %>
       <% end %>

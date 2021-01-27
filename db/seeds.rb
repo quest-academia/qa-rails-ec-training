@@ -103,6 +103,7 @@ user2 = User.second
 end
 puts "User2 - Product & Purchase [#{Product.where(user_id: 2).count}data] Create!" # rubocop:disable Rails/Output
 
+# 発送状態
 %w[入荷待ち 準備中].each do
   ShipmentStatus.create!(shipment_status_name: _1)
 end
@@ -124,21 +125,21 @@ puts "Order [#{Order.count}data] Create!" # rubocop:disable Rails/Output
 order1 = Order.first
 order1.order_details.create!(
   product_id: 1,
-  shipment_status_id: 1,
+  shipment_status_id: shipment_status.id,
   order_detail_number: "foobar123",
   order_quantity: 1,
   shipment_date: Time.current,
 )
 order1.order_details.create!(
   product_id: 1,
-  shipment_status_id: 1,
+  shipment_status_id: shipment_status.id,
   order_detail_number: "foobar999",
   order_quantity: 3,
   shipment_date: Time.current,
 )
 order1.order_details.create!(
   product_id: 2,
-  shipment_status_id: 2,
+  shipment_status_id: shipment_status2.id,
   order_detail_number: "foobar777",
   order_quantity: 2,
   shipment_date: Time.current,
@@ -148,7 +149,7 @@ order1.order_details.create!(
 order2 = Order.second
 order2.order_details.create!(
   product_id: 2,
-  shipment_status_id: 1,
+  shipment_status_id: shipment_status.id,
   order_detail_number: "foobar456",
   order_quantity: 1,
   shipment_date: Time.current,
@@ -159,7 +160,7 @@ order3 = Order.third
 order3.order_details.create!(
   product_id: 3,
   order_id: 3,
-  shipment_status_id: 1,
+  shipment_status_id: shipment_status.id,
   order_detail_number: "foobar789",
   order_quantity: 1,
   shipment_date: Time.current,

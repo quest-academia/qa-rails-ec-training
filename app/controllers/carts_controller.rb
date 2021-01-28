@@ -21,9 +21,9 @@ class CartsController < ApplicationController
       session[:cart] = [{ product_id: params[:product_id], quantity: params[:quantity].to_i }]
     else
       # カート内に既にある商品（数量追加）
-      match_flag = false
-      session[:cart].map {|cart| (cart["quantity"] += params[:quantity].to_i) && (match_flag = true) if cart["product_id"] == params[:product_id] }
-      unless match_flag
+      if index = session[:cart].pluck("product_id").index(params[:product_id]) # rubocop:disable Lint/AssignmentInCondition
+        session[:cart][index]["quantity"] += params[:quantity].to_i
+      else
         session[:cart].push({ product_id: params[:product_id], quantity: params[:quantity].to_i })
       end
     end
@@ -31,20 +31,16 @@ class CartsController < ApplicationController
   end
 
   def change_quantity
-    session[:cart][params[:array_index].to_i - 1]["quantity"] = params[:quantity]
+    session[:cart][params[:array_index].to_i]["quantity"] = params[:quantity]
     redirect_to carts_show_path
   end
 
   def destroy
-    session[:cart].delete_at(params[:array_index].to_i - 1)
+    session[:cart].delete_at(params[:array_index].to_i)
     redirect_to carts_show_path
   end
 
   def total_amount(cart)
-    total_amount = 0
-    cart.each do |cart_item|
-      total_amount += cart_item[4].to_i
-    end
-    total_amount
+    cart.sum{_1[4]}
   end
 end

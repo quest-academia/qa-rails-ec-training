@@ -35,9 +35,9 @@
         </thead>
         <tbody class="table-border-responsive">
           <% if @cart.present? %>
-            <% @cart.each.with_index(1) do |cart, i| %>
+            <% @cart.each.with_index(0) do |cart, i| %>
               <tr>
-                <th scope="row"><%= i %></th>
+                <th scope="row"><%= i+1 %></th>
                 <td data-label="商品名"><%= cart[0] %></td>
                 <td data-label="商品カテゴリ"><%= cart[1] %></td>
                 <td data-label="値段"><%= cart[2] %></td>
